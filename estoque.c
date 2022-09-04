@@ -17,12 +17,34 @@ void telaPrincipal(void);
 void tela_sobre(void);
 void moduloEstoque(void);
 void moduloProdutos(void);
+int escolherOpcao(void);
 
 
 int main(void){
     setlocale(LC_ALL,"Portuguese_Brazil");
+    const int SAIR = 0;
+    int op = 0;
 
-    telaPrincipal();
+    do{
+        telaPrincipal();
+        op = escolherOpcao();
+        switch (op){
+            case 1:        
+                moduloProdutos();
+                break;
+            case 2:
+                moduloEstoque();
+                break;
+            case 5:
+                tela_sobre();
+                break;
+            case 0:
+                break;
+            default:
+                printf("Opção Inválida!!");
+                break;
+        }
+    }while(op != SAIR);
     return 0;
 }
 
@@ -129,4 +151,11 @@ void moduloEstoque(void) {
     printf("###                                                                     ###\n");
     printf("###########################################################################\n");
     printf("\n");
+}
+
+int escolherOpcao(void){
+    int opcao;
+    printf("Digite sua opção: ");
+    scanf("%d",&opcao);
+    return opcao;
 }
