@@ -10,6 +10,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <locale.h>
 
 //Assinatura
@@ -17,13 +18,17 @@ void telaPrincipal(void);
 void tela_sobre(void);
 void moduloEstoque(void);
 void moduloProdutos(void);
+void telaCatalogarProduto(void);
+void telaBuscarProduto(void);
+void telaEditarProduto(void);
+void telaDeletarProduto(void);
 int escolherOpcao(void);
 
 
 int main(void){
     setlocale(LC_ALL,"Portuguese_Brazil");
     const int SAIR = 0;
-    int op = 0;
+    int op, op1;
 
     do{
         telaPrincipal();
@@ -31,6 +36,26 @@ int main(void){
         switch (op){
             case 1:        
                 moduloProdutos();
+                op1 = escolherOpcao();
+                switch (op1){
+                    case 1:
+                        telaCatalogarProduto();
+                        break;
+                    case 2:
+                        telaBuscarProduto();
+                        break;
+                    case 3:
+                        telaEditarProduto();
+                        break;
+                    case 4:
+                        telaDeletarProduto();
+                        break;
+                    case 0:
+                        break;
+                    default:
+                        printf("Opção Inválida!!");
+                        break;
+                }
                 break;
             case 2:
                 moduloEstoque();
@@ -117,8 +142,8 @@ void moduloProdutos(void) {
     printf("###             = = = Sistema de Controle de Estoques = = =             ###\n");
     printf("###                        = Módulo Produtos =                          ###\n");
     printf("###                                                                     ###\n");
-    printf("###            1. Cadastrar Produto                                     ###\n");
-    printf("###            2. Procurar Produto                                      ###\n");
+    printf("###            1. Catalogar Produto                                     ###\n");
+    printf("###            2. Buscar Produto                                        ###\n");
     printf("###            3. Editar Produto                                        ###\n");
     printf("###            4. Deletar Produto                                       ###\n");
     printf("###            0. Sair                                                  ###\n");
@@ -152,6 +177,72 @@ void moduloEstoque(void) {
     printf("###########################################################################\n");
     printf("\n");
 }
+
+void telaCatalogarProduto(void){
+    system("clear||cls");
+    printf("\n");
+    printf("###########################################################################\n");
+    printf("###                                                                     ###\n");
+    printf("###             = = = Sistema de Controle de Estoques = = =             ###\n");
+    printf("###                       = Catalogar Produto =                         ###\n");
+    printf("###                                                                     ###\n");
+    printf("###            Nome do Item:                                            ###\n");
+    printf("###            Categoria:                                               ###\n");
+    printf("###                                                                     ###\n");
+    printf("###########################################################################\n");
+    printf("\n");
+    printf("\t\t\t#Pressione <ENTER> para seguir...\n");
+    getchar();
+}
+
+void telaBuscarProduto(void){
+    system("clear||cls");
+    printf("\n");
+    printf("###########################################################################\n");
+    printf("###                                                                     ###\n");
+    printf("###             = = = Sistema de Controle de Estoques = = =             ###\n");
+    printf("###                         = Buscar Produto =                          ###\n");
+    printf("###                                                                     ###\n");
+    printf("###            Digite o nome do item ('0' para listar todos):           ###\n");
+    printf("###                                                                     ###\n");
+    printf("###########################################################################\n");
+    printf("\n");
+    printf("\t\t\t#Pressione <ENTER> para seguir...\n");
+    getchar();
+}
+
+void telaEditarProduto(void){
+    system("clear||cls");
+    printf("\n");
+    printf("###########################################################################\n");
+    printf("###                                                                     ###\n");
+    printf("###             = = = Sistema de Controle de Estoques = = =             ###\n");
+    printf("###                         = Editar Produto =                          ###\n");
+    printf("###                                                                     ###\n");
+    printf("###            Digite o nome do item:                                   ###\n");
+    printf("###                                                                     ###\n");
+    printf("###########################################################################\n");
+    printf("\n");
+    printf("\t\t\t#Pressione <ENTER> para seguir...\n");
+    getchar();
+}
+
+void telaDeletarProduto(void){
+    system("clear||cls");
+    printf("\n");
+    printf("###########################################################################\n");
+    printf("###                                                                     ###\n");
+    printf("###             = = = Sistema de Controle de Estoques = = =             ###\n");
+    printf("###                        = Deletar Produto =                          ###\n");
+    printf("###                                                                     ###\n");
+    printf("###            Digite o nome do item:                                   ###\n");
+    printf("###                                                                     ###\n");
+    printf("###########################################################################\n");
+    printf("\n");
+    printf("\t\t\t#Pressione <ENTER> para seguir...\n");
+    getchar();
+}
+
 
 int escolherOpcao(void){
     int opcao;
