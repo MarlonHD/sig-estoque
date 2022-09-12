@@ -6,7 +6,7 @@
 ///               Projeto Sistema de Controle de Estoques                   ///
 ///   Developed by Cleomar Junior and Marlon Silva -- since Aug, 2022       ///
 ///////////////////////////////////////////////////////////////////////////////
-///                                Semana 2                                 ///
+///                                Semana 3                                 ///
 ///////////////////////////////////////////////////////////////////////////////
 
 #include <stdio.h>
@@ -75,6 +75,7 @@ int main(void){
 
 //Funções
 void telaPrincipal(void) {
+    char op;
     setlocale(LC_ALL,"Portuguese_Brazil");
     printf("\n");
     printf("###########################################################################\n");
@@ -98,6 +99,10 @@ void telaPrincipal(void) {
     printf("###            0. Sair                                                  ###\n");
     printf("###                                                                     ###\n");
     printf("###########################################################################\n");
+    printf("###                                                                     ###\n");
+    printf("###            Digite sua opção: ");
+    scanf("%[0-9]", &op);
+    getchar();
     printf("\n");
 }
 
@@ -127,6 +132,7 @@ void tela_sobre(void) {
 }
 
 void moduloProdutos(void) {
+    char op;
     printf("\n");
     printf("###########################################################################\n");
     printf("###                                                                     ###\n");
@@ -149,10 +155,15 @@ void moduloProdutos(void) {
     printf("###            0. Sair                                                  ###\n");
     printf("###                                                                     ###\n");
     printf("###########################################################################\n");
+    printf("###                                                                     ###\n");
+    printf("###            Digite sua opção: ");
+    scanf("%[0-9]", &op);
+    getchar();
     printf("\n");
 }
 
 void moduloEstoque(void) {
+    char op;
     printf("\n");
     printf("###########################################################################\n");
     printf("###                                                                     ###\n");
@@ -175,6 +186,10 @@ void moduloEstoque(void) {
     printf("###            0. Sair                                                  ###\n");
     printf("###                                                                     ###\n");
     printf("###########################################################################\n");
+    printf("###                                                                     ###\n");
+    printf("###            Digite sua opção: ");
+    scanf("%[0-9]", &op);
+    getchar();
     printf("\n");
 }
 
@@ -248,5 +263,6 @@ int escolherOpcao(void){
     int opcao;
     printf("Digite sua opção: ");
     scanf("%d",&opcao);
+    getchar();
     return opcao;
 }
