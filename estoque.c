@@ -6,7 +6,7 @@
 ///               Projeto Sistema de Controle de Estoques                   ///
 ///   Developed by Cleomar Junior and Marlon Silva -- since Aug, 2022       ///
 ///////////////////////////////////////////////////////////////////////////////
-///                                Semana 3                                 ///
+///                                Semana 4                                 ///
 ///////////////////////////////////////////////////////////////////////////////
 
 #include <stdio.h>
@@ -22,6 +22,14 @@ void telaCatalogarProduto(void);
 void telaBuscarProduto(void);
 void telaEditarProduto(void);
 void telaDeletarProduto(void);
+void telaCadastrarEstoque(void);
+void telaProcurarEstoque(void);
+void telaEditarEstoque(void);
+void telaDeletarEstoque(void);
+void telaCadastrarFornecedor(void);
+void telaProcurarFornecedor(void);
+void telaEditarFornecedor(void);
+void telaDeletarFornecedor(void);
 int escolherOpcao(void);
 
 
@@ -257,6 +265,147 @@ void telaDeletarProduto(void){
     printf("\t\t\t#Pressione <ENTER> para seguir...\n");
     getchar();
 }
+
+void telaCadastrarEstoque(void){
+    system("clear||cls");
+    printf("\n");
+    printf("###########################################################################\n");
+    printf("###                                                                     ###\n");
+    printf("###             = = = Sistema de Controle de Estoques = = =             ###\n");
+    printf("###                       = Cadastrar Estoque =                         ###\n");
+    printf("###                                                                     ###\n");
+    printf("###            Nome do Item:                                            ###\n");
+    printf("###            Quantidade:                                              ###\n");
+    printf("###            Fornecedor:                                              ###\n");
+    printf("###                                                                     ###\n");
+    printf("###########################################################################\n");
+    printf("\n");
+    printf("\t\t\t#Pressione <ENTER> para seguir...\n");
+    getchar();
+}
+
+void telaProcurarEstoque(void){
+    system("clear||cls");
+    printf("\n");
+    printf("###########################################################################\n");
+    printf("###                                                                     ###\n");
+    printf("###             = = = Sistema de Controle de Estoques = = =             ###\n");
+    printf("###                         = Buscar Estoque =                          ###\n");
+    printf("###                                                                     ###\n");
+    printf("###            Digite o nome do item ('0' para listar todos):           ###\n");
+    printf("###                                                                     ###\n");
+    printf("###########################################################################\n");
+    printf("\n");
+    printf("\t\t\t#Pressione <ENTER> para seguir...\n");
+    getchar();
+}
+
+void telaEditarEstoque(void){
+    system("clear||cls");
+    printf("\n");
+    printf("###########################################################################\n");
+    printf("###                                                                     ###\n");
+    printf("###             = = = Sistema de Controle de Estoques = = =             ###\n");
+    printf("###                         = Editar Estoque =                          ###\n");
+    printf("###                                                                     ###\n");
+    printf("###            Digite o nome do item do estoque:                        ###\n");
+    printf("###                                                                     ###\n");
+    printf("###########################################################################\n");
+    printf("\n");
+    printf("\t\t\t#Pressione <ENTER> para seguir...\n");
+    getchar();
+}
+
+void telaDeletarEstoque(void){
+    system("clear||cls");
+    printf("\n");
+    printf("###########################################################################\n");
+    printf("###                                                                     ###\n");
+    printf("###             = = = Sistema de Controle de Estoques = = =             ###\n");
+    printf("###                        = Deletar Estoque =                          ###\n");
+    printf("###                                                                     ###\n");
+    printf("###            Digite o nome do item:                                   ###\n");
+    printf("###                                                                     ###\n");
+    printf("###                                                                     ###\n");
+    printf("###########################################################################\n");
+    printf("\n");
+    printf("\t\t\t#Pressione <ENTER> para seguir...\n");
+    getchar();
+}
+
+void telaCadastrarFornecedor(void){   
+    system("clear||cls");
+    printf("\n");
+    printf("###########################################################################\n");
+    printf("###                                                                     ###\n");
+    printf("###             = = = Sistema de Controle de Estoques = = =             ###\n");
+    printf("###                    = Cadastrar Fornecedor =                         ###\n");
+    printf("###                                                                     ###\n");
+    printf("###            Nome:                                                    ###\n");
+    printf("###            E-mail:                                                  ###\n");
+    printf("###            CNPJ:                                                    ###\n");
+    printf("###            Telefone:                                                ###\n");
+    printf("###                                                                     ###\n");
+    printf("###########################################################################\n");
+    printf("\n");
+    printf("\t\t\t#Pressione <ENTER> para seguir...\n");
+    getchar();
+}
+
+void telaProcurarFornecedor(void){
+    system("clear||cls");
+    printf("\n");
+    printf("###########################################################################\n");
+    printf("###                                                                     ###\n");
+    printf("###             = = = Sistema de Controle de Estoques = = =             ###\n");
+    printf("###                         = Buscar Produto =                          ###\n");
+    printf("###                                                                     ###\n");
+    printf("###      Digite o nome do Fornecedor ('0' para listar todos):           ###\n");
+    printf("###                                                                     ###\n");
+    printf("###########################################################################\n");
+    printf("\n");
+    printf("\t\t\t#Pressione <ENTER> para seguir...\n");
+    getchar();
+}
+
+void telaEditarFornecedor(void){
+    system("clear||cls");
+    printf("\n");
+    printf("###########################################################################\n");
+    printf("###                                                                     ###\n");
+    printf("###             = = = Sistema de Controle de Estoques = = =             ###\n");
+    printf("###                      = Editar Fornecedor =                          ###\n");
+    printf("###                                                                     ###\n");
+    printf("###            Digite o nome do fornecedor:                             ###\n");
+    printf("###                                                                     ###\n");
+    printf("###########################################################################\n");
+    printf("\n");
+    printf("\t\t\t#Pressione <ENTER> para seguir...\n");
+    getchar();
+}
+
+void telaDeletarFornecedor(void){
+    system("clear||cls");
+    printf("\n");
+    printf("###########################################################################\n");
+    printf("###                                                                     ###\n");
+    printf("###             = = = Sistema de Controle de Estoques = = =             ###\n");
+    printf("###                       = Deletar Fornecedor =                        ###\n");
+    printf("###                                                                     ###\n");
+    printf("###            Digite o nome do fornecedor:                             ###\n");
+    printf("###                                                                     ###\n");
+    printf("###########################################################################\n");
+    printf("\n");
+    printf("\t\t\t#Pressione <ENTER> para seguir...\n");
+    getchar();
+}
+
+
+
+
+
+
+
 
 
 int escolherOpcao(void){
