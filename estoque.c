@@ -67,6 +67,26 @@ int main(void){
                 break;
             case 2:
                 moduloEstoque();
+                op1 = escolherOpcao();
+                switch (op1){
+                    case 1:
+                        telaCadastrarEstoque();
+                        break;
+                    case 2:
+                        telaProcurarEstoque();
+                        break;
+                    case 3:
+                        telaEditarEstoque();
+                        break;
+                    case 4:
+                        telaDeletarEstoque();
+                        break;
+                    case 0:
+                        break;
+                    default:
+                        printf("Opção Inválida!!");
+                        break;
+                }
                 break;
             case 5:
                 tela_sobre();
@@ -290,7 +310,7 @@ void telaProcurarEstoque(void){
     printf("###########################################################################\n");
     printf("###                                                                     ###\n");
     printf("###             = = = Sistema de Controle de Estoques = = =             ###\n");
-    printf("###                         = Buscar Estoque =                          ###\n");
+    printf("###                        = Procurar Estoque =                         ###\n");
     printf("###                                                                     ###\n");
     printf("###            Digite o nome do item ('0' para listar todos):           ###\n");
     printf("###                                                                     ###\n");
@@ -358,7 +378,7 @@ void telaProcurarFornecedor(void){
     printf("###########################################################################\n");
     printf("###                                                                     ###\n");
     printf("###             = = = Sistema de Controle de Estoques = = =             ###\n");
-    printf("###                         = Buscar Produto =                          ###\n");
+    printf("###                       = Buscar Fornecedor =                         ###\n");
     printf("###                                                                     ###\n");
     printf("###      Digite o nome do Fornecedor ('0' para listar todos):           ###\n");
     printf("###                                                                     ###\n");
