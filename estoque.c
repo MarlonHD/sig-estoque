@@ -18,6 +18,7 @@ void telaPrincipal(void);
 void tela_sobre(void);
 void moduloEstoque(void);
 void moduloProdutos(void);
+void moduloFornecedor(void);
 void telaCatalogarProduto(void);
 void telaBuscarProduto(void);
 void telaEditarProduto(void);
@@ -211,6 +212,37 @@ void moduloEstoque(void) {
     printf("###            2. Procurar Estoque                                      ###\n");
     printf("###            3. Editar Estoque                                        ###\n");
     printf("###            4. Deletar Estoque                                       ###\n");
+    printf("###            0. Sair                                                  ###\n");
+    printf("###                                                                     ###\n");
+    printf("###########################################################################\n");
+    printf("###                                                                     ###\n");
+    printf("###            Digite sua opção: ");
+    scanf("%[0-9]", &op);
+    getchar();
+    printf("\n");
+}
+
+void moduloFornecedor(void) {
+    char op;
+    printf("\n");
+    printf("###########################################################################\n");
+    printf("###                                                                     ###\n");
+    printf("###             Universidade Federal do Rio Grande do Norte             ###\n");
+    printf("###                 Centro de Ensino Superior do Seridó                 ###\n");
+    printf("###               Departamento de Computação e Tecnologia               ###\n");
+    printf("###                  Disciplina DCT1106 -- Programação                  ###\n");
+    printf("###               Projeto Sistema de Controle de Estoques               ###\n");
+    printf("###   Developed by Cleomar Junior and Marlon Silva -- since Aug, 2022   ###\n");
+    printf("###                                                                     ###\n");
+    printf("###########################################################################\n");
+    printf("###                                                                     ###\n");
+    printf("###             = = = Sistema de Controle de Estoques = = =             ###\n");
+    printf("###                       = Módulo Fornecedor =                         ###\n");
+    printf("###                                                                     ###\n");
+    printf("###            1. Cadastrar Fornecedor                                  ###\n");
+    printf("###            2. Procurar Fornecedor                                   ###\n");
+    printf("###            3. Editar Fornecedor                                     ###\n");
+    printf("###            4. Deletar Fornecedor                                    ###\n");
     printf("###            0. Sair                                                  ###\n");
     printf("###                                                                     ###\n");
     printf("###########################################################################\n");
