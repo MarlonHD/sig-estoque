@@ -89,6 +89,29 @@ int main(void){
                         break;
                 }
                 break;
+            case 3:
+                moduloFornecedor();
+                op1 = escolherOpcao();
+                switch (op1){
+                    case 1:
+                        telaCadastrarFornecedor();
+                        break;
+                    case 2:
+                        telaProcurarFornecedor();
+                        break;
+                    case 3:
+                        telaEditarFornecedor();
+                        break;
+                    case 4:
+                        telaDeletarFornecedor();
+                        break;
+                    case 0:
+                        break;
+                    default:
+                        printf("Opção Inválida!");
+                        break;
+                }
+                break;
             case 5:
                 tela_sobre();
                 break;
