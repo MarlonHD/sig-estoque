@@ -37,11 +37,12 @@ int escolherOpcao(void);
 int main(void){
     setlocale(LC_ALL,"Portuguese_Brazil");
     const int SAIR = 0;
-    int op, op1;
+    int op;
+    int op1 = 0;
 
     do{
-        telaPrincipal();
-        op = escolherOpcao();
+        (op1 == 0) ? telaPrincipal() : 1;
+        op = (op1 == 0) ? escolherOpcao() : op;
         switch (op){
             case 1:        
                 moduloProdutos();
