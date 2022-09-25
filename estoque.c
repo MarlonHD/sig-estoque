@@ -31,6 +31,22 @@ void telaCadastrarFornecedor(void);
 void telaProcurarFornecedor(void);
 void telaEditarFornecedor(void);
 void telaDeletarFornecedor(void);
+void cadastrarFornecedor(void); //Funções de entrada de dados do fornecedor
+void editarFornecedor(void);
+void procurarFornecedor(void);
+void deletarFornecedor(void);
+//Funções módulo produtos
+void cadastrarProduto(void);
+void editarProduto(void);
+void procurarProduto(void);
+void deletarProduto(void);
+//Funções módulo estoque
+void cadastrarEstoque(void);
+void editarEstoque(void);
+void procurarEstoque(void);
+void deletarEstoque(void);
+
+
 int escolherOpcao(void);
 
 
@@ -476,12 +492,121 @@ void telaDeletarFornecedor(void){
     getchar();
 }
 
+//funções módulo fornecedor
+void cadastrarFornecedor(void){    
+    
+    char nome[20];
+    char email[60];
+    char cnpj[20];
+    char numero[12];
+    
+    printf("Insira o nome: \n");
+    scanf("%s",nome);
+    printf("E-mail: \n");
+    scanf("%s", &email);
+    printf("Insira o cnpj: \n");
+    scanf("%s", &cnpj);
+    printf("Insira o numero: \n");
+    scanf("%s", &numero);
 
+}   
 
+void editarFornecedor(void){
+    
+    char editarFornecedor[20];
+       printf("Nome do fornecedor:\n ");
+       scanf("%s", &editarFornecedor);
 
+}
 
+void procurarFornecedor(void){
+    
+    char procurarFornecedor[20];
+    printf("Nome do fornecedor: \n");
+    scanf("%s", &procurarFornecedor);
+}
 
+void deletarFornecedor(void) {
 
+    char deletarFornecedor[20];
+    printf("Nome do fornecedor: \n");
+    scanf("%s", &deletarFornecedor);
+}
+
+/* Funções do módulo produtos */
+
+void cadastrarProduto(void){
+    
+    char nomeProduto[100];
+    char categoria[100];  //Criação das variáveis 
+
+    printf ("Digite o nome do produto: ");
+    scanf("%s",&nomeProduto);
+    printf("Digite a categoria do produto: ");
+    scanf("%s",&categoria);
+
+}
+
+void editarProduto(void){
+       
+    char editarProduto[20];
+    printf("Nome do Produto:\n ");
+    scanf("%s", &editarProduto);
+
+}
+
+void procurarProduto(void){
+    
+    char procurarProduto[20];
+    printf("Nome do Produto: \n");
+    scanf("%s", &procurarProduto);
+}
+
+void deletarProduto(void) {
+
+    char deletarProduto[20];
+    printf("Nome do Produto: \n");
+    scanf("%s", &deletarProduto);
+}
+
+// Funções do módulo estoque
+
+void cadastrarEstoque(void){    //Função cadastrar estoque
+    
+    char nomeProd[20];
+    int quantidade;
+    char fornecedor[20];
+    
+    printf("Insira o nome do produto: \n");
+    scanf("%s",nomeProd);
+    printf("Quantidade de itens: \n");
+    scanf("%d", &quantidade);
+    printf("Insira o nome do fornecedor: \n");
+    scanf("%s", &fornecedor);
+    
+}  
+
+void editarEstoque(void){
+       
+    char editarEstoque[20];
+    printf("Nome do Estoque:\n ");  //provisório
+    scanf("%s", &editarEstoque);
+
+}
+
+void procurarEstoque(void){
+    
+    char procurarEstoque[20];
+    printf("Nome do Estoque: \n");
+    scanf("%s", &procurarEstoque);
+}
+
+void deletarEstoque(void) {
+
+    char deletarProduto[20];
+    printf("Nome do Estoque a ser deletado: \n");
+    scanf("%s", &deletarEstoque);
+}
 
 
 int escolherOpcao(void){
