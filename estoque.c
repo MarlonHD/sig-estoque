@@ -19,6 +19,8 @@ void tela_sobre(void);
 void moduloEstoque(void);
 void moduloProdutos(void);
 void moduloFornecedor(void);
+void moduloRelatorios(void);
+void relatorioCompleto(void);
 void telaCatalogarProduto(void);
 void telaBuscarProduto(void);
 void telaEditarProduto(void);
@@ -139,6 +141,26 @@ int main(void){
                         break;
                     default:
                         printf("Opção Inválida!");
+                        break;
+                }
+                break;
+            case '4':
+                moduloRelatorios();
+                op1 = escolherOpcao();
+                switch(op1){
+                    case '1':
+                        relatorioCompleto();
+                        break;
+                    case '0':
+                        break;
+                    default:
+                        if(op1 > '1' && op1 < '6'){
+                            printf("\n\n\t\t\tEM DESENVOLVIMENTO!\n\n");
+                            printf("\t\tPressione <ENTER> para continuar...\n");
+                            getchar();
+                        }else{
+                            printf("Opção inválida!");
+                        }
                         break;
                 }
                 break;
@@ -312,6 +334,55 @@ void moduloFornecedor(void) {
     //getchar();
     printf("\n");
 }
+
+void moduloRelatorios(void) {
+    //char op;
+    system("clear||cls");
+    printf("\n");
+    printf("###########################################################################\n");
+    printf("###                                                                     ###\n");
+    printf("###             Universidade Federal do Rio Grande do Norte             ###\n");
+    printf("###                 Centro de Ensino Superior do Seridó                 ###\n");
+    printf("###               Departamento de Computação e Tecnologia               ###\n");
+    printf("###                  Disciplina DCT1106 -- Programação                  ###\n");
+    printf("###               Projeto Sistema de Controle de Estoques               ###\n");
+    printf("###   Developed by Cleomar Junior and Marlon Silva -- since Aug, 2022   ###\n");
+    printf("###                                                                     ###\n");
+    printf("###########################################################################\n");
+    printf("###                                                                     ###\n");
+    printf("###             = = = Sistema de Controle de Estoques = = =             ###\n");
+    printf("###                      = Lista de Relatórios =                        ###\n");
+    printf("###                                                                     ###\n");
+    printf("###            1. Estoque completo                                      ###\n");
+    printf("###            2. Produtos por Fornecedor                               ###\n");
+    printf("###            3. Produtos por Categoria                                ###\n");
+    printf("###            4. Produtos por ID                                       ###\n");
+    printf("###            5. Fornecedor por Categoria                              ###\n");
+    printf("###            0. Sair                                                  ###\n");
+    printf("###                                                                     ###\n");
+    printf("###########################################################################\n");
+    //printf("###                                                                     ###\n");
+    //printf("###            Digite sua opção: ");
+    //scanf("%[0-9]", &op);
+    //getchar();
+    printf("\n");
+}
+
+void relatorioCompleto(void){
+    system("clear||cls");
+    printf("\n");
+    printf("###################################################################################################\n");
+    printf("#  COD_PRODUTO  #  NOME_PRODUTO  #  CATEGORIA  # ID_PROD. #  NOME FORNECEDOR  #  CNPJ FORNECEDOR  #\n");
+    printf("###################################################################################################\n");
+    printf("#               |                |             |          |                   |                   #\n");
+    printf("#               |                |             |          |                   |                   #\n");
+    printf("#               |                |             |          |                   |                   #\n");
+    printf("#               |                |             |          |                   |                   #\n");
+    printf("###################################################################################################\n");
+    printf("\n\t\t\t#Pressione <ENTER> para seguir...\n");
+    getchar();
+}
+
 
 void telaCatalogarProduto(void){
     system("clear||cls");
