@@ -121,15 +121,19 @@ int main(void){
                 switch (op1){
                     case '1':
                         telaCadastrarFornecedor();
+                        cadastrarFornecedor();
                         break;
                     case '2':
                         telaProcurarFornecedor();
+                        procurarFornecedor();
                         break;
                     case '3':
                         telaEditarFornecedor();
+                        editarFornecedor();
                         break;
                     case '4':
                         telaDeletarFornecedor();
+                        deletarFornecedor();
                         break;
                     case '0':
                         break;
@@ -278,7 +282,8 @@ void moduloEstoque(void) {
 }
 
 void moduloFornecedor(void) {
-    char op;
+    //char op;
+    system("clear||cls");
     printf("\n");
     printf("###########################################################################\n");
     printf("###                                                                     ###\n");
@@ -301,10 +306,10 @@ void moduloFornecedor(void) {
     printf("###            0. Sair                                                  ###\n");
     printf("###                                                                     ###\n");
     printf("###########################################################################\n");
-    printf("###                                                                     ###\n");
-    printf("###            Digite sua opção: ");
-    scanf("%[0-9]", &op);
-    getchar();
+    //printf("###                                                                     ###\n");
+    //printf("###            Digite sua opção: ");
+    //scanf("%[0-9]", &op);
+    //getchar();
     printf("\n");
 }
 
@@ -449,15 +454,15 @@ void telaCadastrarFornecedor(void){
     printf("###             = = = Sistema de Controle de Estoques = = =             ###\n");
     printf("###                    = Cadastrar Fornecedor =                         ###\n");
     printf("###                                                                     ###\n");
-    printf("###            Nome:                                                    ###\n");
-    printf("###            E-mail:                                                  ###\n");
-    printf("###            CNPJ:                                                    ###\n");
-    printf("###            Telefone:                                                ###\n");
+    //printf("###            Nome:                                                    ###\n");
+    //printf("###            E-mail:                                                  ###\n");
+    //printf("###            CNPJ:                                                    ###\n");
+    //printf("###            Telefone:                                                ###\n");
     printf("###                                                                     ###\n");
     printf("###########################################################################\n");
     printf("\n");
-    printf("\t\t\t#Pressione <ENTER> para seguir...\n");
-    getchar();
+    //printf("\t\t\t#Pressione <ENTER> para seguir...\n");
+    //getchar();
 }
 
 void telaProcurarFornecedor(void){
@@ -468,12 +473,12 @@ void telaProcurarFornecedor(void){
     printf("###             = = = Sistema de Controle de Estoques = = =             ###\n");
     printf("###                       = Buscar Fornecedor =                         ###\n");
     printf("###                                                                     ###\n");
-    printf("###      Digite o nome do Fornecedor ('0' para listar todos):           ###\n");
+    //printf("###      Digite o nome do Fornecedor ('0' para listar todos):           ###\n");
     printf("###                                                                     ###\n");
     printf("###########################################################################\n");
     printf("\n");
-    printf("\t\t\t#Pressione <ENTER> para seguir...\n");
-    getchar();
+    //printf("\t\t\t#Pressione <ENTER> para seguir...\n");
+    //getchar();
 }
 
 void telaEditarFornecedor(void){
@@ -484,12 +489,12 @@ void telaEditarFornecedor(void){
     printf("###             = = = Sistema de Controle de Estoques = = =             ###\n");
     printf("###                      = Editar Fornecedor =                          ###\n");
     printf("###                                                                     ###\n");
-    printf("###            Digite o nome do fornecedor:                             ###\n");
+    //printf("###            Digite o nome do fornecedor:                             ###\n");
     printf("###                                                                     ###\n");
     printf("###########################################################################\n");
     printf("\n");
-    printf("\t\t\t#Pressione <ENTER> para seguir...\n");
-    getchar();
+    //printf("\t\t\t#Pressione <ENTER> para seguir...\n");
+    //getchar();
 }
 
 void telaDeletarFornecedor(void){
@@ -500,53 +505,76 @@ void telaDeletarFornecedor(void){
     printf("###             = = = Sistema de Controle de Estoques = = =             ###\n");
     printf("###                       = Deletar Fornecedor =                        ###\n");
     printf("###                                                                     ###\n");
-    printf("###            Digite o nome do fornecedor:                             ###\n");
+    //printf("###            Digite o nome do fornecedor:                             ###\n");
     printf("###                                                                     ###\n");
     printf("###########################################################################\n");
     printf("\n");
-    printf("\t\t\t#Pressione <ENTER> para seguir...\n");
-    getchar();
+    //printf("\t\t\t#Pressione <ENTER> para seguir...\n");
+    //getchar();
 }
 
 //funções módulo fornecedor
 void cadastrarFornecedor(void){    
     
-    char nome[20];
-    char email[60];
-    char cnpj[20];
-    char numero[12];
+    char nome[30];
+    char email[45];
+    char cnpj[20]; //char || int (A definir)
+    char numero[13];
     
-    printf("Insira o nome: \n");
+    printf("\tInsira o nome: \n\t");
     scanf("%s",nome);
-    printf("E-mail: \n");
+    getchar();
+    printf("\tE-mail: \n\t");
     scanf("%s", email);
-    printf("Insira o cnpj: \n");
+    getchar();
+    printf("\tInsira o cnpj: \n\t");
     scanf("%s", cnpj);
-    printf("Insira o numero: \n");
+    getchar();
+    printf("\tInsira o numero: \n\t");
     scanf("%s", numero);
+    getchar();
 
 }   
 
 void editarFornecedor(void){
     
-    char editarFornecedor[20];
-       printf("Nome do fornecedor:\n ");
-       scanf("%s", editarFornecedor);
+    char cnpj[20];
+    char nome[30];
+    char email[45];
+    char numero[13];
+    
+    printf("\tCNPJ do fornecedor:\n\t");
+    scanf("%s", cnpj);
+    getchar();
+
+    //validação
+    //se validação = ok
+        printf("\tInsira o novo nome: \n\t");
+        scanf("%s",nome);
+        getchar();
+        printf("\tNovo E-mail: \n\t");
+        scanf("%s", email);
+        getchar();
+        printf("\tInsira o novo numero: \n\t");
+        scanf("%s", numero);
+        getchar();
 
 }
 
 void procurarFornecedor(void){
     
-    char procurarFornecedor[20];
-    printf("Nome do fornecedor: \n");
-    scanf("%s", procurarFornecedor);
+    char nomeFornecedor[30];
+    printf("\tNome do fornecedor: \n\t");
+    scanf("%s", nomeFornecedor);
+    getchar();
 }
 
 void deletarFornecedor(void) {
 
-    char deletarFornecedor[20];
-    printf("Nome do fornecedor: \n");
-    scanf("%s", deletarFornecedor);
+    char cnpj[20];
+    printf("\tInforme o CNPJ do fornecedor: \n\t");
+    scanf("%s", cnpj);
+    getchar();
 }
 
 /* Funções do módulo produtos */
