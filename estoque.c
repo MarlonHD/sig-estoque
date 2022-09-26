@@ -6,7 +6,7 @@
 ///               Projeto Sistema de Controle de Estoques                   ///
 ///   Developed by Cleomar Junior and Marlon Silva -- since Aug, 2022       ///
 ///////////////////////////////////////////////////////////////////////////////
-///                                Semana 4                                 ///
+///                                Semana 5                                 ///
 ///////////////////////////////////////////////////////////////////////////////
 
 #include <stdio.h>
@@ -31,7 +31,8 @@ void telaCadastrarFornecedor(void);
 void telaProcurarFornecedor(void);
 void telaEditarFornecedor(void);
 void telaDeletarFornecedor(void);
-void cadastrarFornecedor(void); //Funções de entrada de dados do fornecedor
+//Funções de entrada de dados do fornecedor
+void cadastrarFornecedor(void); 
 void editarFornecedor(void);
 void procurarFornecedor(void);
 void deletarFornecedor(void);
@@ -47,92 +48,96 @@ void procurarEstoque(void);
 void deletarEstoque(void);
 
 
-int escolherOpcao(void);
+char escolherOpcao(void);
 
 
 int main(void){
     setlocale(LC_ALL,"Portuguese_Brazil");
-    const int SAIR = 0;
-    int op;
-    int op1 = 0;
+    const char SAIR = '0';
+    char op;
+    char op1 = '0';
 
     do{
-        (op1 == 0) ? telaPrincipal() : 1;
-        op = (op1 == 0) ? escolherOpcao() : op;
+        (op1 == '0') ? telaPrincipal() : 1;
+        op = (op1 == '0') ? escolherOpcao() : op;
         switch (op){
-            case 1:        
+            case '1':        
                 moduloProdutos();
                 op1 = escolherOpcao();
                 switch (op1){
-                    case 1:
+                    case '1':
                         telaCatalogarProduto();
+                        cadastrarProduto();
                         break;
-                    case 2:
+                    case '2':
                         telaBuscarProduto();
+                        procurarProduto();
                         break;
-                    case 3:
+                    case '3':
                         telaEditarProduto();
+                        editarProduto();
                         break;
-                    case 4:
+                    case '4':
                         telaDeletarProduto();
+                        deletarProduto();
                         break;
-                    case 0:
+                    case '0':
                         break;
                     default:
                         printf("Opção Inválida!!");
                         break;
                 }
                 break;
-            case 2:
+            case '2':
                 moduloEstoque();
                 op1 = escolherOpcao();
                 switch (op1){
-                    case 1:
+                    case '1':
                         telaCadastrarEstoque();
                         break;
-                    case 2:
+                    case '2':
                         telaProcurarEstoque();
                         break;
-                    case 3:
+                    case '3':
                         telaEditarEstoque();
                         break;
-                    case 4:
+                    case '4':
                         telaDeletarEstoque();
                         break;
-                    case 0:
+                    case '0':
                         break;
                     default:
                         printf("Opção Inválida!!");
                         break;
                 }
                 break;
-            case 3:
+            case '3':
                 moduloFornecedor();
                 op1 = escolherOpcao();
                 switch (op1){
-                    case 1:
+                    case '1':
                         telaCadastrarFornecedor();
                         break;
-                    case 2:
+                    case '2':
                         telaProcurarFornecedor();
                         break;
-                    case 3:
+                    case '3':
                         telaEditarFornecedor();
                         break;
-                    case 4:
+                    case '4':
                         telaDeletarFornecedor();
                         break;
-                    case 0:
+                    case '0':
                         break;
                     default:
                         printf("Opção Inválida!");
                         break;
                 }
                 break;
-            case 5:
+            case '5':
                 tela_sobre();
                 break;
-            case 0:
+            case '0':
                 break;
             default:
                 printf("Opção Inválida!!");
@@ -144,7 +149,7 @@ int main(void){
 
 //Funções
 void telaPrincipal(void) {
-    char op;
+    //char op;
     setlocale(LC_ALL,"Portuguese_Brazil");
     printf("\n");
     printf("###########################################################################\n");
@@ -168,10 +173,10 @@ void telaPrincipal(void) {
     printf("###            0. Sair                                                  ###\n");
     printf("###                                                                     ###\n");
     printf("###########################################################################\n");
-    printf("###                                                                     ###\n");
-    printf("###            Digite sua opção: ");
-    scanf("%[0-9]", &op);
-    getchar();
+    //printf("###                                                                     ###\n");
+    //printf("###            Digite sua opção: ");
+    //scanf("%[0-9]", &op);
+    //getchar();
     printf("\n");
 }
 
@@ -201,7 +206,7 @@ void tela_sobre(void) {
 }
 
 void moduloProdutos(void) {
-    char op;
+    //char op;
     printf("\n");
     printf("###########################################################################\n");
     printf("###                                                                     ###\n");
@@ -224,10 +229,10 @@ void moduloProdutos(void) {
     printf("###            0. Sair                                                  ###\n");
     printf("###                                                                     ###\n");
     printf("###########################################################################\n");
-    printf("###                                                                     ###\n");
-    printf("###            Digite sua opção: ");
-    scanf("%[0-9]", &op);
-    getchar();
+    //printf("###                                                                     ###\n");
+    //printf("###            Digite sua opção: ");
+    //scanf("%[0-9]", &op);
+    //getchar();
     printf("\n");
 }
 
@@ -301,13 +306,14 @@ void telaCatalogarProduto(void){
     printf("###             = = = Sistema de Controle de Estoques = = =             ###\n");
     printf("###                       = Catalogar Produto =                         ###\n");
     printf("###                                                                     ###\n");
-    printf("###            Nome do Item:                                            ###\n");
-    printf("###            Categoria:                                               ###\n");
+    //printf("###            Nome do Item:                                            ###\n");
+    //printf("###            CNPJ do Fornecedor:                                      ###\n");
+    //printf("###            Categoria:                                               ###\n");
     printf("###                                                                     ###\n");
     printf("###########################################################################\n");
     printf("\n");
-    printf("\t\t\t#Pressione <ENTER> para seguir...\n");
-    getchar();
+    //printf("\t\t\t#Pressione <ENTER> para seguir...\n");
+    //getchar();
 }
 
 void telaBuscarProduto(void){
@@ -318,12 +324,12 @@ void telaBuscarProduto(void){
     printf("###             = = = Sistema de Controle de Estoques = = =             ###\n");
     printf("###                         = Buscar Produto =                          ###\n");
     printf("###                                                                     ###\n");
-    printf("###            Digite o nome do item ('0' para listar todos):           ###\n");
+    //printf("###            Digite o nome do item ('0' para listar todos):           ###\n");
     printf("###                                                                     ###\n");
     printf("###########################################################################\n");
     printf("\n");
-    printf("\t\t\t#Pressione <ENTER> para seguir...\n");
-    getchar();
+    //printf("\t\t\t#Pressione <ENTER> para seguir...\n");
+    //getchar();
 }
 
 void telaEditarProduto(void){
@@ -334,12 +340,12 @@ void telaEditarProduto(void){
     printf("###             = = = Sistema de Controle de Estoques = = =             ###\n");
     printf("###                         = Editar Produto =                          ###\n");
     printf("###                                                                     ###\n");
-    printf("###            Digite o nome do item:                                   ###\n");
+    //printf("###            Digite o ID do item:                                     ###\n");
     printf("###                                                                     ###\n");
     printf("###########################################################################\n");
     printf("\n");
-    printf("\t\t\t#Pressione <ENTER> para seguir...\n");
-    getchar();
+    //printf("\t\t\t#Pressione <ENTER> para seguir...\n");
+    //getchar();
 }
 
 void telaDeletarProduto(void){
@@ -350,12 +356,12 @@ void telaDeletarProduto(void){
     printf("###             = = = Sistema de Controle de Estoques = = =             ###\n");
     printf("###                        = Deletar Produto =                          ###\n");
     printf("###                                                                     ###\n");
-    printf("###            Digite o nome do item:                                   ###\n");
+    //printf("###            Digite o ID do item:                                     ###\n");
     printf("###                                                                     ###\n");
     printf("###########################################################################\n");
     printf("\n");
-    printf("\t\t\t#Pressione <ENTER> para seguir...\n");
-    getchar();
+    //printf("\t\t\t#Pressione <ENTER> para seguir...\n");
+    //getchar();
 }
 
 void telaCadastrarEstoque(void){
@@ -503,11 +509,11 @@ void cadastrarFornecedor(void){
     printf("Insira o nome: \n");
     scanf("%s",nome);
     printf("E-mail: \n");
-    scanf("%s", &email);
+    scanf("%s", email);
     printf("Insira o cnpj: \n");
-    scanf("%s", &cnpj);
+    scanf("%s", cnpj);
     printf("Insira o numero: \n");
-    scanf("%s", &numero);
+    scanf("%s", numero);
 
 }   
 
@@ -515,7 +521,7 @@ void editarFornecedor(void){
     
     char editarFornecedor[20];
        printf("Nome do fornecedor:\n ");
-       scanf("%s", &editarFornecedor);
+       scanf("%s", editarFornecedor);
 
 }
 
@@ -523,50 +529,58 @@ void procurarFornecedor(void){
     
     char procurarFornecedor[20];
     printf("Nome do fornecedor: \n");
-    scanf("%s", &procurarFornecedor);
+    scanf("%s", procurarFornecedor);
 }
 
 void deletarFornecedor(void) {
 
     char deletarFornecedor[20];
     printf("Nome do fornecedor: \n");
-    scanf("%s", &deletarFornecedor);
+    scanf("%s", deletarFornecedor);
 }
 
 /* Funções do módulo produtos */
 
 void cadastrarProduto(void){
     
-    char nomeProduto[100];
+    char nomeProduto[30];
+    int cnpjFornecedor;
     char categoria[100];  //Criação das variáveis 
 
-    printf ("Digite o nome do produto: ");
-    scanf("%s",&nomeProduto);
-    printf("Digite a categoria do produto: ");
-    scanf("%s",&categoria);
-
+    printf ("\tDigite o nome do produto: \n\t");
+    scanf("%s",nomeProduto);
+    getchar();
+    printf("\tDigite o CNPJ do fornecedor (apenas números): \n\t");
+    scanf("%d", &cnpjFornecedor);
+    getchar();
+    printf("\tDigite a categoria do produto: \n\t");
+    scanf("%s",categoria);
+    getchar();
 }
 
 void editarProduto(void){
        
-    char editarProduto[20];
-    printf("Nome do Produto:\n ");
-    scanf("%s", &editarProduto);
+    int idProduto;
+    printf("\tID do Produto:\n\t");
+    scanf("%d", &idProduto);
+    getchar();
 
 }
 
 void procurarProduto(void){
     
-    char procurarProduto[20];
-    printf("Nome do Produto: \n");
-    scanf("%s", &procurarProduto);
+    char nomeProduto[30];
+    printf("\tNome do Produto: \n\t");
+    scanf("%s", nomeProduto);
+    getchar();
 }
 
 void deletarProduto(void) {
 
-    char deletarProduto[20];
-    printf("Nome do Produto: \n");
-    scanf("%s", &deletarProduto);
+    int idProduto;
+    printf("\tID do Produto: \n\t");
+    scanf("%d", &idProduto);
+    getchar();
 }
 
 // Funções do módulo estoque
@@ -582,7 +596,7 @@ void cadastrarEstoque(void){    //Função cadastrar estoque
     printf("Quantidade de itens: \n");
     scanf("%d", &quantidade);
     printf("Insira o nome do fornecedor: \n");
-    scanf("%s", &fornecedor);
+    scanf("%s", fornecedor);
     
 }  
 
@@ -590,7 +604,7 @@ void editarEstoque(void){
        
     char editarEstoque[20];
     printf("Nome do Estoque:\n ");  //provisório
-    scanf("%s", &editarEstoque);
+    scanf("%s", editarEstoque);
 
 }
 
@@ -598,21 +612,21 @@ void procurarEstoque(void){
     
     char procurarEstoque[20];
     printf("Nome do Estoque: \n");
-    scanf("%s", &procurarEstoque);
+    scanf("%s", procurarEstoque);
 }
 
 void deletarEstoque(void) {
 
-    char deletarProduto[20];
+    char produto[20];
     printf("Nome do Estoque a ser deletado: \n");
-    scanf("%s", &deletarEstoque);
+    scanf("%s", produto);
 }
 
 
-int escolherOpcao(void){
-    int opcao;
-    printf("Digite sua opção: ");
-    scanf("%d",&opcao);
+char escolherOpcao(void){
+    char opcao;
+    printf("\tDigite sua opção: ");
+    scanf("%[0-9]",&opcao);
     getchar();
     return opcao;
 }
