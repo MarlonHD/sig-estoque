@@ -6,25 +6,21 @@
 ///               Projeto Sistema de Controle de Estoques                   ///
 ///   Developed by Cleomar Junior and Marlon Silva -- since Aug, 2022       ///
 ///////////////////////////////////////////////////////////////////////////////
-///                                Semana 5                                 ///
+///                                Semana 7                                 ///
 ///////////////////////////////////////////////////////////////////////////////
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
+#include "modulos/produto.h"
 
 //Assinatura
 void telaPrincipal(void);
 void tela_sobre(void);
 void moduloEstoque(void);
-    void moduloProdutos(void);
 void moduloFornecedor(void);
 void moduloRelatorios(void);
 void relatorioCompleto(void);
-    void telaCatalogarProduto(void);
-    void telaBuscarProduto(void);
-    void telaEditarProduto(void);
-    void telaDeletarProduto(void);
 void telaCadastrarEstoque(void);
 void telaProcurarEstoque(void);
 void telaEditarEstoque(void);
@@ -38,11 +34,6 @@ void cadastrarFornecedor(void);
 void editarFornecedor(void);
 void procurarFornecedor(void);
 void deletarFornecedor(void);
-//Funções módulo produtos
-    void cadastrarProduto(void);
-    void editarProduto(void);
-    void procurarProduto(void);
-    void deletarProduto(void);
 //Funções módulo estoque
 void cadastrarEstoque(void);
 void editarEstoque(void);
@@ -221,29 +212,6 @@ void tela_sobre(void) {
     getchar();
 }
 
-void moduloProdutos(void) {
-    //char op;
-    system("clear||cls");
-    printf("\n");
-    printf("###########################################################################\n");
-    printf("###                                                                     ###\n");
-    printf("###             = = = Sistema de Controle de Estoques = = =             ###\n");
-    printf("###                        = Módulo Produtos =                          ###\n");
-    printf("###                                                                     ###\n");
-    printf("###            1. Catalogar Produto                                     ###\n");
-    printf("###            2. Buscar Produto                                        ###\n");
-    printf("###            3. Editar Produto                                        ###\n");
-    printf("###            4. Deletar Produto                                       ###\n");
-    printf("###            0. Sair                                                  ###\n");
-    printf("###                                                                     ###\n");
-    printf("###########################################################################\n");
-    //printf("###                                                                     ###\n");
-    //printf("###            Digite sua opção: ");
-    //scanf("%[0-9]", &op);
-    //getchar();
-    printf("\n");
-}
-
 void moduloEstoque(void) {
     //char op;
     system("clear||cls");
@@ -329,72 +297,6 @@ void relatorioCompleto(void){
     getchar();
 }
 
-
-void telaCatalogarProduto(void){
-    system("clear||cls");
-    printf("\n");
-    printf("###########################################################################\n");
-    printf("###                                                                     ###\n");
-    printf("###             = = = Sistema de Controle de Estoques = = =             ###\n");
-    printf("###                       = Catalogar Produto =                         ###\n");
-    printf("###                                                                     ###\n");
-    //printf("###            Nome do Item:                                            ###\n");
-    //printf("###            CNPJ do Fornecedor:                                      ###\n");
-    //printf("###            Categoria:                                               ###\n");
-    printf("###                                                                     ###\n");
-    printf("###########################################################################\n");
-    printf("\n");
-    //printf("\t\t\t#Pressione <ENTER> para seguir...\n");
-    //getchar();
-}
-
-void telaBuscarProduto(void){
-    system("clear||cls");
-    printf("\n");
-    printf("###########################################################################\n");
-    printf("###                                                                     ###\n");
-    printf("###             = = = Sistema de Controle de Estoques = = =             ###\n");
-    printf("###                         = Buscar Produto =                          ###\n");
-    printf("###                                                                     ###\n");
-    //printf("###            Digite o nome do item ('0' para listar todos):           ###\n");
-    printf("###                                                                     ###\n");
-    printf("###########################################################################\n");
-    printf("\n");
-    //printf("\t\t\t#Pressione <ENTER> para seguir...\n");
-    //getchar();
-}
-
-void telaEditarProduto(void){
-    system("clear||cls");
-    printf("\n");
-    printf("###########################################################################\n");
-    printf("###                                                                     ###\n");
-    printf("###             = = = Sistema de Controle de Estoques = = =             ###\n");
-    printf("###                         = Editar Produto =                          ###\n");
-    printf("###                                                                     ###\n");
-    //printf("###            Digite o ID do item:                                     ###\n");
-    printf("###                                                                     ###\n");
-    printf("###########################################################################\n");
-    printf("\n");
-    //printf("\t\t\t#Pressione <ENTER> para seguir...\n");
-    //getchar();
-}
-
-void telaDeletarProduto(void){
-    system("clear||cls");
-    printf("\n");
-    printf("###########################################################################\n");
-    printf("###                                                                     ###\n");
-    printf("###             = = = Sistema de Controle de Estoques = = =             ###\n");
-    printf("###                        = Deletar Produto =                          ###\n");
-    printf("###                                                                     ###\n");
-    //printf("###            Digite o ID do item:                                     ###\n");
-    printf("###                                                                     ###\n");
-    printf("###########################################################################\n");
-    printf("\n");
-    //printf("\t\t\t#Pressione <ENTER> para seguir...\n");
-    //getchar();
-}
 
 void telaCadastrarEstoque(void){
     system("clear||cls");
@@ -591,50 +493,6 @@ void deletarFornecedor(void) {
     char cnpj[20];
     printf("\tInforme o CNPJ do fornecedor: \n\t");
     scanf("%s", cnpj);
-    getchar();
-}
-
-/* Funções do módulo produtos */
-
-void cadastrarProduto(void){
-    
-    char nomeProduto[30];
-    int cnpjFornecedor;
-    char categoria[100];  //Criação das variáveis 
-
-    printf ("\tDigite o nome do produto: \n\t");
-    scanf("%s",nomeProduto);
-    getchar();
-    printf("\tDigite o CNPJ do fornecedor (apenas números): \n\t");
-    scanf("%d", &cnpjFornecedor);
-    getchar();
-    printf("\tDigite a categoria do produto: \n\t");
-    scanf("%s",categoria);
-    getchar();
-}
-
-void editarProduto(void){
-       
-    int idProduto;
-    printf("\tID do Produto:\n\t");
-    scanf("%d", &idProduto);
-    getchar();
-
-}
-
-void procurarProduto(void){
-    
-    char nomeProduto[30];
-    printf("\tNome do Produto: \n\t");
-    scanf("%s", nomeProduto);
-    getchar();
-}
-
-void deletarProduto(void) {
-
-    int idProduto;
-    printf("\tID do Produto: \n\t");
-    scanf("%d", &idProduto);
     getchar();
 }
 
