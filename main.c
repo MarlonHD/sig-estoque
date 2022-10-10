@@ -17,14 +17,14 @@
 void telaPrincipal(void);
 void tela_sobre(void);
 void moduloEstoque(void);
-void moduloProdutos(void);
+    void moduloProdutos(void);
 void moduloFornecedor(void);
 void moduloRelatorios(void);
 void relatorioCompleto(void);
-void telaCatalogarProduto(void);
-void telaBuscarProduto(void);
-void telaEditarProduto(void);
-void telaDeletarProduto(void);
+    void telaCatalogarProduto(void);
+    void telaBuscarProduto(void);
+    void telaEditarProduto(void);
+    void telaDeletarProduto(void);
 void telaCadastrarEstoque(void);
 void telaProcurarEstoque(void);
 void telaEditarEstoque(void);
@@ -39,10 +39,10 @@ void editarFornecedor(void);
 void procurarFornecedor(void);
 void deletarFornecedor(void);
 //Funções módulo produtos
-void cadastrarProduto(void);
-void editarProduto(void);
-void procurarProduto(void);
-void deletarProduto(void);
+    void cadastrarProduto(void);
+    void editarProduto(void);
+    void procurarProduto(void);
+    void deletarProduto(void);
 //Funções módulo estoque
 void cadastrarEstoque(void);
 void editarEstoque(void);
