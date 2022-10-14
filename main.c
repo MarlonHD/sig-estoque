@@ -6,7 +6,7 @@
 ///               Projeto Sistema de Controle de Estoques                   ///
 ///   Developed by Cleomar Junior and Marlon Silva -- since Aug, 2022       ///
 ///////////////////////////////////////////////////////////////////////////////
-///                                Semana 7                                 ///
+///                                Semana 8                                 ///
 ///////////////////////////////////////////////////////////////////////////////
 
 #include <stdio.h>
@@ -16,6 +16,7 @@
 #include "modulos/estoque.h"
 #include "modulos/fornecedor.h"
 #include "modulos/relatorios.h"
+#include "modulos/validacoes.h"
 
 //Assinatura
 void telaPrincipal(void);
