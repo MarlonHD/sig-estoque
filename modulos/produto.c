@@ -5,70 +5,70 @@
 void moduloProdutos(){
     system("clear||cls");
     printf("\n");
-    printf("###########################################################################\n");
-    printf("###                                                                     ###\n");
-    printf("###             = = = Sistema de Controle de Estoques = = =             ###\n");
-    printf("###                        = Módulo Produtos =                          ###\n");
-    printf("###                                                                     ###\n");
-    printf("###            1. Catalogar Produto                                     ###\n");
-    printf("###            2. Buscar Produto                                        ###\n");
-    printf("###            3. Editar Produto                                        ###\n");
-    printf("###            4. Deletar Produto                                       ###\n");
-    printf("###            0. Sair                                                  ###\n");
-    printf("###                                                                     ###\n");
-    printf("###########################################################################\n");
+    printf("################################################################################\n");
+    printf("###                                                                          ###\n");
+    printf("###                = = = Sistema de Controle de Estoques = = =               ###\n");
+    printf("###                           = Módulo Produtos =                            ###\n");
+    printf("###                                                                          ###\n");
+    printf("###               1. Catalogar Produto                                       ###\n");
+    printf("###               2. Buscar Produto                                          ###\n");
+    printf("###               3. Editar Produto                                          ###\n");
+    printf("###               4. Deletar Produto                                         ###\n");
+    printf("###               0. Voltar                                                  ###\n");
+    printf("###                                                                          ###\n");
+    printf("################################################################################\n");
     printf("\n");
 }
 
 void telaCatalogarProduto(void){
     system("clear||cls");
     printf("\n");
-    printf("###########################################################################\n");
-    printf("###                                                                     ###\n");
-    printf("###             = = = Sistema de Controle de Estoques = = =             ###\n");
-    printf("###                       = Catalogar Produto =                         ###\n");
-    printf("###                                                                     ###\n");
-    printf("###                                                                     ###\n");
-    printf("###########################################################################\n");
+    printf("################################################################################\n");
+    printf("###                                                                          ###\n");
+    printf("###                = = = Sistema de Controle de Estoques = = =               ###\n");
+    printf("###                          = Catalogar Produto =                           ###\n");
+    printf("###                                                                          ###\n");
+    printf("###                                                                          ###\n");
+    printf("################################################################################\n");
     printf("\n");
 }
 
 void telaBuscarProduto(void){
     system("clear||cls");
     printf("\n");
-    printf("###########################################################################\n");
-    printf("###                                                                     ###\n");
-    printf("###             = = = Sistema de Controle de Estoques = = =             ###\n");
-    printf("###                         = Buscar Produto =                          ###\n");
-    printf("###                                                                     ###\n");
-    printf("###                                                                     ###\n");
-    printf("###########################################################################\n");
+    printf("################################################################################\n");
+    printf("###                                                                          ###\n");
+    printf("###                = = = Sistema de Controle de Estoques = = =               ###\n");
+    printf("###                            = Buscar Produto =                            ###\n");
+    printf("###                                                                          ###\n");
+    printf("###                                                                          ###\n");
+    printf("################################################################################\n");
     printf("\n");
 }
 
 void telaEditarProduto(void){
     system("clear||cls");
     printf("\n");
-    printf("###########################################################################\n");
-    printf("###                                                                     ###\n");
-    printf("###             = = = Sistema de Controle de Estoques = = =             ###\n");
-    printf("###                         = Editar Produto =                          ###\n");
-    printf("###                                                                     ###\n");
-    printf("###                                                                     ###\n");
-    printf("###########################################################################\n");
+    printf("################################################################################\n");
+    printf("###                                                                          ###\n");
+    printf("###                = = = Sistema de Controle de Estoques = = =               ###\n");
+    printf("###                            = Editar Produto =                            ###\n");
+    printf("###                                                                          ###\n");
+    printf("###                                                                          ###\n");
+    printf("################################################################################\n");
     printf("\n");
 }
 
 void telaDeletarProduto(void){
     system("clear||cls");
     printf("\n");
-    printf("###########################################################################\n");
-    printf("###                                                                     ###\n");
-    printf("###             = = = Sistema de Controle de Estoques = = =             ###\n");
-    printf("###                        = Deletar Produto =                          ###\n");
-    printf("###                                                                     ###\n");
-    printf("###                                                                     ###\n");
-    printf("###########################################################################\n");
+    printf("################################################################################\n");
+    printf("###                                                                          ###\n");
+    printf("###                = = = Sistema de Controle de Estoques = = =               ###\n");
+    printf("###                           = Deletar Produto =                            ###\n");
+    printf("###                                                                          ###\n");
+    printf("###                                                                          ###\n");
+    printf("################################################################################\n");
     printf("\n");
 }
 
