@@ -201,3 +201,17 @@ int isCharValid(char *c, char filtro[]){
     }
     return 1;
 }
+
+int isEmailValid(char *email){
+    if(contChar(email, '@') == 1){
+        int x = findChar(email, '@');
+        if(x != 0 && contnChar(email, '.', x) == 1){
+            if(findChar(email, '.') != 0){
+                if(isCharValid(email, "@._")){
+                    return 1;
+                }
+            }
+        }
+    }
+    return 0;
+}

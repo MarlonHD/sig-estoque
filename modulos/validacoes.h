@@ -8,3 +8,4 @@ int findChar(char*, char); // Retorna a possição da primeira ocorrência do ch
 int isNomeValid(char*); // Verifica se a cadeia de char é totalmente composta por letras
 int isNumValid(char*); // Verifica se a cadeia de char é totalmente composta por numeros
 int isCharValid(char*, char[]); // Verifica se a sequencia de char possui algum char fora do filtro
+int isEmailValid(char*); // Verifica se o email é válido
