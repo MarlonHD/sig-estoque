@@ -157,3 +157,25 @@ int findChar(char *texto, char c){
     return -1;
 
 }
+
+int isNumValid(char *num){
+    int tam = strlen(num);
+
+    for(int i = 0; i<tam; i++){
+        if(isLetra(num[i])){
+            return 0;
+        }
+    }
+    return 1;
+}
+
+int isNomeValid(char *nome){
+    int tam = strlen(nome);
+
+    for(int i = 0; i<tam; i++){
+        if(isDigit(nome[i])){
+            return 0;
+        }
+    }
+    return 1;
+}
