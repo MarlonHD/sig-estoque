@@ -123,3 +123,37 @@ int isLetra(char c){
         return 0;
     }
 }
+
+
+int contChar(char *texto, char c){
+    int tam = strlen(texto);
+    int cont = 0;
+    for(int i = 0; i<tam; i++){
+        if(texto[i] == c){
+            cont++;
+        }
+    }
+    return cont;
+}
+
+int contnChar(char *texto, char c, int n){
+    int tam = strlen(texto);
+    int cont = 0;
+    for(int i = n; i<tam; i++){
+        if(texto[i] == c){
+            cont++;
+        }
+    }
+    return cont;
+}
+
+int findChar(char *texto, char c){
+    int tam = strlen(texto);
+    for(int i = 0; i<tam; i++){
+        if(texto[i] == c){
+            return i;
+        }
+    }
+    return -1;
+
+}
