@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "validacoes.h"
 
 int validBarCode(char *codigo){
@@ -61,7 +62,7 @@ int main(void){
 }*/
 
 
-/* ----------------- EM DESENVOLVIMENTO -----------------*/
+/* ----------------- EM DESENVOLVIMENTO -----------------
 char cnpj[15];// Variável cnpj
 int somaDV1 , somaDV2, divisao1, divisao2, DV1, DV2, i;
 
@@ -102,4 +103,23 @@ if (DV1 == cnpj[13] && DV2 == cnpj[14])
 printf("CNPJ Válido!");
 else
 printf("CNPJ Inválido!");
+}
+*/
+
+
+//---| Validações String |---
+int isDigit(char n){
+    if(n >= '0' && n <= '9'){
+        return 1;
+    }else{
+        return 0;
+    }
+}
+
+int isLetra(char c){
+    if((c >= 'a' && c<= 'z') || (c >= 'A' && c <= 'Z')){
+        return 1;
+    }else{
+        return 0;
+    }
 }
