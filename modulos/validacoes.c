@@ -179,3 +179,25 @@ int isNomeValid(char *nome){
     }
     return 1;
 }
+
+int isCharValid(char *c, char filtro[]){
+    int tamF = strlen(filtro);
+    int tamC = strlen(c);
+    int cont = 0;
+
+
+    for(int i = 0; i<tamC-1; i++){
+        if(!(isDigit(c[i]) || isLetra(c[i]))){
+            cont = 0;
+            for(int j = 0; j < tamF; j++){
+                if(c[i] == filtro[j]){
+                    cont++;
+                }
+            }
+            if(cont == 0){
+                return 0;
+            }
+        }
+    }
+    return 1;
+}

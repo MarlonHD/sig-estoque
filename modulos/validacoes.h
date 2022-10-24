@@ -7,3 +7,4 @@ int contnChar(char*, char, int); // Conta quantos caracteres específicos há na
 int findChar(char*, char); // Retorna a possição da primeira ocorrência do char especifico na cadeia de char
 int isNomeValid(char*); // Verifica se a cadeia de char é totalmente composta por letras
 int isNumValid(char*); // Verifica se a cadeia de char é totalmente composta por numeros
+int isCharValid(char*, char[]); // Verifica se a sequencia de char possui algum char fora do filtro
