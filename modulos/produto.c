@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "produto.h"
+#include "validacoes.h"
+
+typedef struct produto Produto;
 
 void moduloProdutos(){
     system("clear||cls");
@@ -77,26 +80,55 @@ void telaDeletarProduto(void){
 
 void cadastrarProduto(void){
     
-    char nomeProduto[30];
-    int cnpjFornecedor;
-    char categoria[100];  //Criação das variáveis 
+    Produto* prod;
+    prod = (Produto*)malloc(sizeof(Produto));
 
-    printf ("\tDigite o nome do produto: \n\t");
-    scanf("%s",nomeProduto);
-    getchar();
+    do{
+        printf("\tDigite o nome do produto: \n\t");
+        fgets(prod->nomeProduto, 50, stdin);
+    }while(!isNomeValid(prod->nomeProduto));
+    // validação do cnpj após finalizar
     printf("\tDigite o CNPJ do fornecedor (apenas números): \n\t");
-    scanf("%d", &cnpjFornecedor);
-    getchar();
+    fgets(prod->cnpjFornecedor, 20, stdin);
+
+    do{
+        printf("\tDigite a categoria do produto: \n\t");
+        fgets(prod->categoria, 30, stdin);
+    }while(!isNomeValid(prod->categoria));
+
+    do{
+        printf("\tDigite o código de barras do produto: \n\t");
+        fgets(prod->codProduto, 20, stdin);
+    }while(!validBarCode(prod->codProduto));
+
+    exibirProduto(prod);
+    free(prod);
+}
+
+void preencheProduto(Produto *prod){
+    printf("\tDigite o nome do produto: \n\t");
+    fgets(prod->nomeProduto, 50, stdin);
+    printf("\tDigite o CNPJ do fornecedor (apenas números): \n\t");
+    fgets(prod->cnpjFornecedor, 20, stdin);
     printf("\tDigite a categoria do produto: \n\t");
-    scanf("%s",categoria);
-    getchar();
+    fgets(prod->categoria, 30, stdin);
+    printf("\tDigite o código de barras do produto: \n\t");
+    fgets(prod->codProduto, 20, stdin);
+}
+
+void exibirProduto(Produto *produto){
+    printf("\t################################");
+    printf("\t%s", produto->codProduto);
+    printf("\t%s", produto->nomeProduto);
+    printf("\t%s", produto->categoria);
+    printf("\t%s", produto->cnpjFornecedor);
 }
 
 void editarProduto(void){
        
-    int idProduto;
-    printf("\tID do Produto:\n\t");
-    scanf("%d", &idProduto);
+    int codProduto;
+    printf("\tCódigo do Produto:\n\t");
+    scanf("%d", &codProduto);
     getchar();
 
 }
@@ -111,8 +143,8 @@ void procurarProduto(void){
 
 void deletarProduto(void) {
 
-    int idProduto;
-    printf("\tID do Produto: \n\t");
-    scanf("%d", &idProduto);
+    int codProduto;
+    printf("\tCódigo do Produto: \n\t");
+    scanf("%d", &codProduto);
     getchar();
 }
