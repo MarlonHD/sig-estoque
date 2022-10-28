@@ -4,14 +4,14 @@
 #include "validacoes.h"
 
 int validBarCode(char *codigo){
-    int tam = 14;
+    int tam = 13;
     int code[tam];
     int cont = -1;
     int verif, soma=0;
     do{
         cont++;
     }while(codigo[cont] >= '0' && codigo[cont] <= '9');
-
+    
     if(cont>tam){
         return 0;
     }
@@ -24,7 +24,7 @@ int validBarCode(char *codigo){
         }
     }
 
-    verif = code[13];
+    verif = code[12];
 
     for(int i = 0; i<tam-1; i++){
         if(i%2 == 1){
@@ -33,12 +33,11 @@ int validBarCode(char *codigo){
             soma += code[i];
         }
     }
-
+    
     if((10-soma%10) == verif){
         return 1;
     }else{
         return 0;
-    //    printf("soma: %d \nverif: %d\n",soma, (10 - soma%10));
     }
     
 }
