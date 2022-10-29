@@ -4,6 +4,7 @@
 #include "validacoes.h"
 
 int validBarCode(char *codigo){
+    limpaTexto(codigo);
     int tam = 13;
     int code[tam];
     int cont = -1;
@@ -33,7 +34,7 @@ int validBarCode(char *codigo){
             soma += code[i];
         }
     }
-    
+
     if((10-soma%10) == verif){
         return 1;
     }else{
@@ -213,4 +214,21 @@ int isEmailValid(char *email){
         }
     }
     return 0;
+}
+
+void limpaTexto(char *texto){
+    int tam = strlen(texto);
+    char copyC[tam];
+    int cont = 0;
+    for(int i = 0; i < tam; i++){
+        if(isDigit(texto[i]) || isLetra(texto[i]) || texto[i] == '\n'){
+            copyC[i-cont] = texto[i];
+        }else{
+            cont++;
+        }
+        if(i == tam-1){
+            copyC[i-cont+1] = '\0';
+        }
+    }
+    strcpy(texto, copyC);
 }

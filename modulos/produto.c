@@ -90,6 +90,7 @@ void cadastrarProduto(void){
     // validação do cnpj após finalizar
     printf("\tDigite o CNPJ do fornecedor (apenas números): \n\t");
     fgets(prod->cnpjFornecedor, 20, stdin);
+    limpaTexto(prod->cnpjFornecedor);
 
     do{
         printf("\tDigite a categoria do produto: \n\t");
@@ -102,6 +103,7 @@ void cadastrarProduto(void){
     }while(!validBarCode(prod->codProduto));
 
     exibirProduto(prod);
+    getchar();
     free(prod);
 }
 
@@ -117,11 +119,11 @@ void preencheProduto(Produto *prod){
 }
 
 void exibirProduto(Produto *produto){
-    printf("\t################################");
+    printf("\t################################\n");
     printf("\t%s", produto->codProduto);
     printf("\t%s", produto->nomeProduto);
-    printf("\t%s", produto->categoria);
     printf("\t%s", produto->cnpjFornecedor);
+    printf("\t%s", produto->categoria);
 }
 
 void editarProduto(void){
