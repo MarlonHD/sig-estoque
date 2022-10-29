@@ -62,49 +62,49 @@ int main(void){
 }*/
 
 
-/* ----------------- EM DESENVOLVIMENTO -----------------
-char cnpj[15];// Variável cnpj
-int somaDV1 , somaDV2, divisao1, divisao2, DV1, DV2, i;
-
 void validacnpj(void){
-    printf("Cnpj (Apenas numeros): ");
-    scanf("%s", &cnpj);
-
-for ( i = 0; i < 15; i++)
-{   (cnpj[i] - '0');
+    char cnpj[14];// Variável cnpj
+    int cnpjInt[14]; // Vetor inteiro cnpj
+    int somaDV1 , somaDV2, divisao1, divisao2, DV1, DV2;
    
-}
+    printf("Cnpj (Apenas numeros): "); 
+    scanf("%s", &cnpj);  // Pega o cnpj
 
-somaDV1 =((cnpj[0] * 5) + (cnpj[1] * 4) +(cnpj[2] * 3) +
-    (cnpj[3] * 2) + (cnpj[4] * 9) + (cnpj[5] * 8) +
-    (cnpj[6] * 7) + (cnpj[7] * 6) +  (cnpj[8] * 5) +
-    (cnpj[9] * 4) + (cnpj[10] * 3) + (cnpj[11] * 2));
-//calculos DV1
-divisao1 = (somaDV1 % 11); //resto
+    for(int i = 0; i < 14; i++){  // Converte o cnpj pra int
+        cnpjInt[i] = cnpj[i] - 48;
+    }
 
-if (divisao1 < 2) 
-DV1 = 0;
-else
-DV1 = (11 - divisao1);
-
-
-somaDV2 =((cnpj[0] * 6) + (cnpj[1] * 5) +(cnpj[2] * 4) +
-    (cnpj[3] * 3) + (cnpj[4] * 2) + (cnpj[5] * 9) +
-    (cnpj[6] * 8) + (cnpj[7] * 7) +  (cnpj[8] * 6) +
-    (cnpj[9] * 5) + (cnpj[10] * 4) + (cnpj[11] * 3) + (DV1 * 2));
-divisao2 = (somaDV2 % 11); //resto
-
-if (divisao2 < 2) 
-DV2 = 0;
-else
-DV2 = (11 - divisao2);
+somaDV1 =((cnpjInt[0] * 5) + (cnpjInt[1] * 4) +(cnpjInt[2] * 3) +  // Contas do Dígito Verificador 1
+         (cnpjInt[3] * 2) + (cnpjInt[4] * 9) + (cnpjInt[5] * 8) +
+         (cnpjInt[6] * 7) + (cnpjInt[7] * 6) +  (cnpjInt[8] * 5) +
+         (cnpjInt[9] * 4) + (cnpjInt[10] * 3) + (cnpjInt[11] * 2));
     
-if (DV1 == cnpj[13] && DV2 == cnpj[14])
-printf("CNPJ Válido!");
-else
-printf("CNPJ Inválido!");
+
+    divisao1 = (somaDV1 % 11); //resto
+
+    if (divisao1 < 2) 
+        DV1 = 0;
+    else
+        DV1 = (11 - divisao1);
+
+
+somaDV2 =((cnpjInt[0] * 6) + (cnpjInt[1] * 5) +(cnpjInt[2] * 4) +  // Contas do Dígito Verificador 2
+        (cnpjInt[3] * 3) + (cnpjInt[4] * 2) + (cnpjInt[5] * 9) +
+        (cnpjInt[6] * 8) + (cnpjInt[7] * 7) +  (cnpjInt[8] * 6) +
+        (cnpjInt[9] * 5) + (cnpjInt[10] * 4) + (cnpjInt[11] * 3) + (DV1 * 2));
+    divisao2 = (somaDV2 % 11); //resto
+
+    if (divisao2 < 2) 
+        DV2 = 0;
+    else
+        DV2 = (11 - divisao2);
+    
+
+    if (DV1 == cnpjInt[12] && DV2 == cnpjInt[13])
+        printf("CNPJ Válido!");
+    else
+        printf("CNPJ Inválido!");
 }
-*/
 
 
 //---| Validações String |---
