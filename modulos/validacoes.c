@@ -101,9 +101,9 @@ somaDV2 =((cnpjInt[0] * 6) + (cnpjInt[1] * 5) +(cnpjInt[2] * 4) +  // Contas do 
     
 
     if (DV1 == cnpjInt[12] && DV2 == cnpjInt[13])
-        printf("CNPJ Válido!");
+        return 1;
     else
-        printf("CNPJ Inválido!");
+        return 0;
 }
 
 
