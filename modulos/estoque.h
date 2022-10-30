@@ -1,3 +1,10 @@
+typedef struct estoque Estoque;
+
+struct estoque{
+    int idProduto;
+    int quantidade;
+};
+
 void moduloEstoque(void);
 
 void telaCadastrarEstoque(void);

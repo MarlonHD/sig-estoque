@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include "estoque.h"
 
+typedef struct estoque Estoque;
+
 void moduloEstoque(void) {
     system("clear||cls");
     printf("\n");

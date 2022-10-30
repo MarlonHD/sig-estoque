@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include "fornecedor.h"
 
+typedef struct fornecedor Fornecedor;
+
 void moduloFornecedor(void) {
     system("clear||cls");
     printf("\n");

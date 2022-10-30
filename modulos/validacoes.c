@@ -74,7 +74,7 @@ void validacnpj(void){
         cnpjInt[i] = cnpj[i] - 48;
     }
 
-somaDV1 =((cnpjInt[0] * 5) + (cnpjInt[1] * 4) +(cnpjInt[2] * 3) +  // Contas do Dígito Verificador 1
+    somaDV1 =((cnpjInt[0] * 5) + (cnpjInt[1] * 4) +(cnpjInt[2] * 3) +  // Contas do Dígito Verificador 1
          (cnpjInt[3] * 2) + (cnpjInt[4] * 9) + (cnpjInt[5] * 8) +
          (cnpjInt[6] * 7) + (cnpjInt[7] * 6) +  (cnpjInt[8] * 5) +
          (cnpjInt[9] * 4) + (cnpjInt[10] * 3) + (cnpjInt[11] * 2));
@@ -88,7 +88,7 @@ somaDV1 =((cnpjInt[0] * 5) + (cnpjInt[1] * 4) +(cnpjInt[2] * 3) +  // Contas do 
         DV1 = (11 - divisao1);
 
 
-somaDV2 =((cnpjInt[0] * 6) + (cnpjInt[1] * 5) +(cnpjInt[2] * 4) +  // Contas do Dígito Verificador 2
+    somaDV2 =((cnpjInt[0] * 6) + (cnpjInt[1] * 5) +(cnpjInt[2] * 4) +  // Contas do Dígito Verificador 2
         (cnpjInt[3] * 3) + (cnpjInt[4] * 2) + (cnpjInt[5] * 9) +
         (cnpjInt[6] * 8) + (cnpjInt[7] * 7) +  (cnpjInt[8] * 6) +
         (cnpjInt[9] * 5) + (cnpjInt[10] * 4) + (cnpjInt[11] * 3) + (DV1 * 2));
