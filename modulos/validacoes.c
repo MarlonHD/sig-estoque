@@ -61,7 +61,7 @@ int main(void){
     return 0;
 }*/
 
-
+/*
 void validacnpj(void){
     char cnpj[14];// Variável cnpj
     int cnpjInt[14]; // Vetor inteiro cnpj
@@ -105,7 +105,7 @@ void validacnpj(void){
     else
         return 0;
 }
-
+*/
 
 //---| Validações String |---
 int isDigit(char n){

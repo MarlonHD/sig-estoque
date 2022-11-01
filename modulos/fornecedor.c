@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "fornecedor.h"
+#include "validacoes.h"
 
 typedef struct fornecedor Fornecedor;
 
@@ -75,27 +76,36 @@ void telaDeletarFornecedor(void){
 }
 
 //funções módulo fornecedor
-void cadastrarFornecedor(void){    
-    
-    char nome[30];
-    char email[45];
-    char cnpj[20]; //char || int (A definir)
-    char numero[13];
-    
-    printf("\tInsira o nome: \n\t");
-    scanf("%s",nome);
-    getchar();
-    printf("\tE-mail: \n\t");
-    scanf("%s", email);
-    getchar();
-    printf("\tInsira o cnpj: \n\t");
-    scanf("%s", cnpj);
-    getchar();
-    printf("\tInsira o numero: \n\t");
-    scanf("%s", numero);
-    getchar();
+void cadastrarFornecedor(void){ 
 
+    Fornecedor* fulano;
+    fulano = (Fornecedor*) malloc(sizeof(Fornecedor));
+    
+    do{
+        printf("\tInsira o nome do Fornecedor: \n\t");
+        fgets(fulano->nome, 30, stdin);
+    }while(!isNomeValid(fulano->nome));
+    do{
+        printf("\tE-mail: \n\t");
+        fgets(fulano->email, 50, stdin);
+    }while(!isEmailValid(fulano->email));
+    printf("\tInsira o CNPJ do Fornecedor: \n\t");
+    fgets(fulano->cnpj, 20, stdin);
+    printf("\tInsira o número de telefone: \n\t");
+    fgets(fulano->telefone, 20, stdin);
+
+    exibeFornecedor(fulano);
+    getchar();
+    free(fulano);
 }   
+
+void exibeFornecedor(Fornecedor *fornecedor){
+    printf("\t#########################\n");
+    printf("\t%s", fornecedor->cnpj);
+    printf("\t%s", fornecedor->nome);
+    printf("\t%s", fornecedor->email);
+    printf("\t%s", fornecedor->telefone);
+}
 
 void editarFornecedor(void){
     
