@@ -5,6 +5,7 @@ struct fornecedor{
     char email[50];
     char cnpj[20];
     char telefone[20];
+    char status;
 };
 
 void moduloFornecedor(void);
@@ -14,6 +15,8 @@ void telaProcurarFornecedor(void);
 void telaEditarFornecedor(void);
 void telaDeletarFornecedor(void);
 
+Fornecedor* preencheFornecedor(void);
+void gravaFornecedor(Fornecedor*);
 void exibeFornecedor(Fornecedor*);
 
 //Funções de entrada de dados do fornecedor

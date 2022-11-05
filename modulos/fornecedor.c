@@ -79,6 +79,15 @@ void telaDeletarFornecedor(void){
 void cadastrarFornecedor(void){ 
 
     Fornecedor* fulano;
+    fulano = preencheFornecedor();
+    gravaFornecedor(fulano);
+    exibeFornecedor(fulano);
+    getchar();
+    free(fulano);
+}   
+
+Fornecedor* preencheFornecedor(void){
+    Fornecedor* fulano;
     fulano = (Fornecedor*) malloc(sizeof(Fornecedor));
     
     do{
@@ -93,11 +102,22 @@ void cadastrarFornecedor(void){
     fgets(fulano->cnpj, 20, stdin);
     printf("\tInsira o número de telefone: \n\t");
     fgets(fulano->telefone, 20, stdin);
+    fulano->status = 'c';
 
-    exibeFornecedor(fulano);
-    getchar();
-    free(fulano);
-}   
+    return fulano;
+}
+
+void gravaFornecedor(Fornecedor *fornecedor){
+    FILE* fp;
+    fp = fopen("./arquivos/fornecedores.dat", "ab");
+
+    if(fp == NULL){
+        printf("Erro ao criar o arquivo!");
+        exit(1);
+    }
+    fwrite(fornecedor, sizeof(Fornecedor), 1, fp);
+    fclose(fp);
+}
 
 void exibeFornecedor(Fornecedor *fornecedor){
     printf("\t#########################\n");
