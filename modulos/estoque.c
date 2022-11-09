@@ -76,20 +76,49 @@ void telaDeletarEstoque(void){
 
 void cadastrarEstoque(void){    //Função cadastrar estoque
     
-    int idProduto;
-    int quantidade;
-    
-    printf("\tFUNÇÃO BIP EM DESENVOLVIMENTO!\n\n");
+    Estoque *est;
 
-    printf("\tInsira o ID do produto: \n\t");
-    scanf("%d", &idProduto);
-    getchar();
-    printf("\tQuantidade de itens: \n\t");
-    scanf("%d", &quantidade);
+    est = preencheEstoque();
+    gravaEstoque(est);
+    exibeEstoque(est);
     getchar();
 
+    free(est);
+ 
+}
+
+Estoque* preencheEstoque(void){
+    Estoque* est;
+    est = (Estoque*) malloc(sizeof(Estoque));
+
+    //validação com o codigo do produto
+    printf("\tInforme o codigo do produto: \n\t");
+    fgets(est->codProduto, 20, stdin);
     
-}  
+    printf("\tInforme a quantidade de produtos: \n\t");
+    scanf("%d", &est->quantidade);
+    getchar();
+
+    return est;
+}
+
+void gravaEstoque(Estoque *est){
+    FILE* fp;
+    fp = fopen("./arquivos/estoque.dat", "ab");
+
+    if(fp == NULL){
+        printf("Erro ao criar o arquivo!");
+        exit(1);
+    }
+    fwrite(est, sizeof(Estoque), 1, fp);
+    fclose(fp);
+}
+
+void exibeEstoque(Estoque *est){
+    printf("\t########################\n");
+    printf("\tcodigo: %s", est->codProduto);
+    printf("\tquantidade: %d \n", est->quantidade);
+}
 
 void editarEstoque(void){
        

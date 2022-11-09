@@ -1,7 +1,7 @@
 typedef struct estoque Estoque;
 
 struct estoque{
-    int idProduto;
+    char codProduto[20];
     int quantidade;
 };
 
@@ -11,6 +11,10 @@ void telaCadastrarEstoque(void);
 void telaProcurarEstoque(void);
 void telaEditarEstoque(void);
 void telaDeletarEstoque(void);
+
+Estoque* preencheEstoque(void);
+void gravaEstoque(Estoque*);
+void exibeEstoque(Estoque*);
 
 //Funções módulo estoque
 void cadastrarEstoque(void);
