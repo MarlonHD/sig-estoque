@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "produto.h"
 #include "validacoes.h"
 
@@ -134,6 +135,55 @@ void exibeProduto(Produto *produto){
     printf("\t%s", produto->categoria);
 }
 
+void buscarProdutoNome(char *nome){
+    FILE* fp;
+    Produto* prod;
+    int cont = 0;
+
+    prod = (Produto*)malloc(sizeof(Produto));
+
+    fp = fopen("./arquivos/produtos.dat","rb");
+    if(fp == NULL){
+        printf("404! \nErro na abertura do arquivo!");
+        exit(1);
+    }
+    while(fread(prod, sizeof(Produto), 1, fp)){
+        if(strncmp(prod->nomeProduto, nome, strlen(nome)-1) == 0){
+            cont++;
+            exibeProduto(prod);
+        }
+    }
+    if(cont == 0){
+        printf("\n\tNenhum produto encontrado com esse nome!\n");
+    }
+    free(prod);
+}
+
+void buscarProdutoCod(char *codigo){
+    FILE* fp;
+    Produto* prod;
+    int finded = 0;
+
+    prod = (Produto*)malloc(sizeof(Produto));
+
+    limpaTexto(codigo);
+    fp = fopen("./arquivos/produtos.dat","rb");
+    if(fp == NULL){
+        printf("404! \nErro na abertura do arquivo!");
+        exit(1);
+    }
+    while((!finded) && fread(prod, sizeof(Produto), 1, fp)){
+        if(strcmp(prod->codProduto, codigo) == 0){
+            exibeProduto(prod);
+            finded = 1;
+        }
+    }
+    if(!finded){
+        printf("\n\tNenhum produto encontrado com esse código!\n");
+    }
+    free(prod);
+}
+
 void editarProduto(void){
        
     int codProduto;
@@ -145,9 +195,11 @@ void editarProduto(void){
 
 void procurarProduto(void){
     
-    char nomeProduto[30];
+    char nomeProduto[50];
     printf("\tNome do Produto: \n\t");
-    scanf("%s", nomeProduto);
+    fgets(nomeProduto, 30, stdin);
+
+    buscarProdutoNome(nomeProduto);
     getchar();
 }
 

@@ -17,6 +17,9 @@ void telaDeletarProduto(void);
 Produto* preencheProduto(void);
 void gravaProduto(Produto*);
 void exibeProduto(Produto*);
+void buscarProdutoNome(char*);
+void buscarProdutoCod(char*);
+void atualizaProduto(char*);
 
 void cadastrarProduto(void);
 void editarProduto(void);
