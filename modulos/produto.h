@@ -14,10 +14,11 @@ void telaBuscarProduto(void);
 void telaEditarProduto(void);
 void telaDeletarProduto(void);
 
+Produto* preencheProduto(void);
+void gravaProduto(Produto*);
+void exibeProduto(Produto*);
+
 void cadastrarProduto(void);
 void editarProduto(void);
 void procurarProduto(void);
 void deletarProduto(void);
-
-void preencheProduto(Produto*);
-void exibirProduto(Produto*);

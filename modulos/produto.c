@@ -81,7 +81,17 @@ void telaDeletarProduto(void){
 void cadastrarProduto(void){
     
     Produto* prod;
-    prod = (Produto*)malloc(sizeof(Produto));
+    
+    prod = preencheProduto();
+    gravaProduto(prod);
+    exibeProduto(prod);
+    getchar();
+    free(prod);
+}
+
+Produto* preencheProduto(void){
+    Produto *prod;
+    prod = (Produto*) malloc(sizeof(Produto));
 
     do{
         printf("\tDigite o nome do produto: \n\t");
@@ -102,23 +112,21 @@ void cadastrarProduto(void){
         fgets(prod->codProduto, 20, stdin);
     }while(!validBarCode(prod->codProduto));
 
-    exibirProduto(prod);
-    getchar();
-    free(prod);
+    return prod;
 }
 
-void preencheProduto(Produto *prod){
-    printf("\tDigite o nome do produto: \n\t");
-    fgets(prod->nomeProduto, 50, stdin);
-    printf("\tDigite o CNPJ do fornecedor (apenas números): \n\t");
-    fgets(prod->cnpjFornecedor, 20, stdin);
-    printf("\tDigite a categoria do produto: \n\t");
-    fgets(prod->categoria, 30, stdin);
-    printf("\tDigite o código de barras do produto: \n\t");
-    fgets(prod->codProduto, 20, stdin);
+void gravaProduto(Produto *prod){
+    FILE* fp;
+    fp = fopen("./arquivos/produtos.dat","ab");
+    if(fp == NULL){
+        printf("404! \nErro na abertura do arquivo!");
+        exit(1);
+    }
+    fwrite(prod, sizeof(Produto), 1, fp);
+    fclose(fp);
 }
 
-void exibirProduto(Produto *produto){
+void exibeProduto(Produto *produto){
     printf("\t################################\n");
     printf("\t%s", produto->codProduto);
     printf("\t%s", produto->nomeProduto);
