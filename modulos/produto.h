@@ -19,7 +19,7 @@ Produto* preencheProduto(void);
 void gravaProduto(Produto*);
 void exibeProduto(Produto*);
 void buscarProdutoNome(char*);
-void buscarProdutoCod(char*);
+int  isProdutoCad(char*);
 void atualizaProduto(char*);
 void excluirProduto(char*);
 

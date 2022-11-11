@@ -111,7 +111,10 @@ Produto* preencheProduto(void){
     do{
         printf("\tDigite o código de barras do produto: \n\t");
         fgets(prod->codProduto, 20, stdin);
-    }while(!validBarCode(prod->codProduto));
+        if(isProdutoCad(prod->codProduto)){
+            printf("\n\tJá existe um produto cadastrado com esse código!!\n");
+        }
+    }while(!validBarCode(prod->codProduto) || isProdutoCad(prod->codProduto));
 
     prod->sit = '1';
 
@@ -162,7 +165,7 @@ void buscarProdutoNome(char *nome){
     free(prod);
 }
 
-void buscarProdutoCod(char *codigo){
+int isProdutoCad(char *codigo){
     FILE* fp;
     Produto* prod;
     int finded = 0;
@@ -177,15 +180,13 @@ void buscarProdutoCod(char *codigo){
     }
     while((!finded) && fread(prod, sizeof(Produto), 1, fp)){
         if((strcmp(prod->codProduto, codigo) == 0) && (prod->sit == '1')){
-            exibeProduto(prod);
             finded = 1;
         }
     }
-    if(!finded){
-        printf("\n\tNenhum produto encontrado com esse código!\n\t");
-    }
     fclose(fp);
     free(prod);
+
+    return finded;
 }
 
 void atualizaProduto(char *codigo){
