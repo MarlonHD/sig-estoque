@@ -21,6 +21,7 @@ void exibeProduto(Produto*);
 void buscarProdutoNome(char*);
 void buscarProdutoCod(char*);
 void atualizaProduto(char*);
+void excluirProduto(char*);
 
 void cadastrarProduto(void);
 void editarProduto(void);
