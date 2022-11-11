@@ -113,6 +113,8 @@ Produto* preencheProduto(void){
         fgets(prod->codProduto, 20, stdin);
     }while(!validBarCode(prod->codProduto));
 
+    prod->sit = '1';
+
     return prod;
 }
 
@@ -148,7 +150,7 @@ void buscarProdutoNome(char *nome){
         exit(1);
     }
     while(fread(prod, sizeof(Produto), 1, fp)){
-        if(strncmp(prod->nomeProduto, nome, strlen(nome)-1) == 0){
+        if((strncmp(prod->nomeProduto, nome, strlen(nome)-1) == 0) && (prod->sit == '1')){
             cont++;
             exibeProduto(prod);
         }
@@ -156,6 +158,7 @@ void buscarProdutoNome(char *nome){
     if(cont == 0){
         printf("\n\tNenhum produto encontrado com esse nome!\n");
     }
+    fclose(fp);
     free(prod);
 }
 
@@ -173,7 +176,7 @@ void buscarProdutoCod(char *codigo){
         exit(1);
     }
     while((!finded) && fread(prod, sizeof(Produto), 1, fp)){
-        if(strcmp(prod->codProduto, codigo) == 0){
+        if((strcmp(prod->codProduto, codigo) == 0) && (prod->sit == '1')){
             exibeProduto(prod);
             finded = 1;
         }
@@ -181,16 +184,57 @@ void buscarProdutoCod(char *codigo){
     if(!finded){
         printf("\n\tNenhum produto encontrado com esse código!\n");
     }
+    fclose(fp);
     free(prod);
+}
+
+void atualizaProduto(char *codigo){
+    FILE* fp;
+    Produto* prod;
+    Produto* prodNovo;
+    int finded = 0;
+    char opcao;
+
+    prod = (Produto*)malloc(sizeof(Produto));
+    prodNovo = (Produto*)malloc(sizeof(Produto));
+
+    limpaTexto(codigo);
+    fp = fopen("./arquivos/produtos.dat","r+b");
+    if(fp == NULL){
+        printf("404! \nErro na abertura do arquivo!");
+        exit(1);
+    }
+    while((!finded) && fread(prod, sizeof(Produto), 1, fp)){
+        if((strcmp(prod->codProduto, codigo) == 0) && (prod->sit == '1')){
+            finded = 1;
+        }
+    }
+    if(!finded){
+        printf("\n\tNenhum produto encontrado com esse código!\n");
+    }else{
+        exibeProduto(prod);
+        printf("\n\n");
+        printf("\t0.....Cancelar edição\n\t");
+        scanf("%c", &opcao);
+        if(opcao != '0'){    
+            prodNovo = preencheProduto();
+            fseek(fp, (-1)*sizeof(Produto), SEEK_CUR);
+            fwrite(prodNovo, sizeof(Produto), 1, fp);
+            printf("Produto alterado com sucesso!");
+        }
+    }
+    
+    fclose(fp);
+    free(prod);
+    free(prodNovo);
 }
 
 void editarProduto(void){
        
-    int codProduto;
+    char codigo[20];
     printf("\tCódigo do Produto:\n\t");
-    scanf("%d", &codProduto);
-    getchar();
-
+    fgets(codigo, 20, stdin);
+    atualizaProduto(codigo);
 }
 
 void procurarProduto(void){

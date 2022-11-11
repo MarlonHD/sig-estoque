@@ -5,6 +5,7 @@ struct produto{
     char nomeProduto[50];
     char categoria[30];
     char cnpjFornecedor[20];
+    char sit;
 };
 
 void moduloProdutos(void);
