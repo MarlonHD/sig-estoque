@@ -127,6 +127,136 @@ void exibeFornecedor(Fornecedor *fornecedor){
     printf("\t%s", fornecedor->telefone);
 }
 
+/*
+void buscarFornecedorNome(char *nome){
+    FILE* fp;
+    Fornecedor* fulano;
+    int cont = 0;
+
+    fulano = (Fornecedor*)malloc(sizeof(Fornecedor));
+
+    fp = fopen("./arquivos/fornecedores.dat","rb");
+    if(fp == NULL){
+        printf("404! \nErro na abertura do arquivo!");
+        exit(1);
+    }
+    while(fread(fulano, sizeof(Fornecedor), 1, fp)){
+        if((strncmp(fulano->nome, nome, strlen(nome)-1) == 0) && (fulano->status == 'c')){
+            cont++;
+            exibeFornecedor(fulano);
+        }
+    }
+    if(cont == 0){
+        printf("\n\tNenhum fornecedor encontrado com esse nome!\n\t");
+    }
+    fclose(fp);
+    free(fulano);
+}
+
+int isFornecedorCad(char *cnpj){
+    FILE* fp;
+    Fornecedor* fulano;
+    int finded = 0;
+
+    fulano = (Fornecedor*)malloc(sizeof(Fornecedor));
+
+    limpaTexto(cnpj);
+    fp = fopen("./arquivos/produtos.dat","rb");
+    if(fp == NULL){
+        printf("404! \nErro na abertura do arquivo!");
+        exit(1);
+    }
+    while((!finded) && fread(fulano, sizeof(Fornecedor), 1, fp)){
+        if((strcmp(fulano->cnpj) == 0) && (fulano->status == 'c')){
+            finded = 1;
+        }
+    }
+    fclose(fp);
+    free(fulano);
+
+    return finded;
+}
+
+void atualizaFornecedor(char *cnpj){
+    FILE* fp;
+    Fornecedor* fulano;
+    Fornecedor* fornNovo;
+    int finded = 0;
+    char opcao;
+
+    fulano = (Fornecedor*)malloc(sizeof(Fornecedor));
+    fornNovo = (Fornecedor*)malloc(sizeof(Fornecedor));
+
+    limpaTexto(cnpj);
+    fp = fopen("./arquivos/fornecedores.dat","r+b");
+    if(fp == NULL){
+        printf("404! \nErro na abertura do arquivo!");
+        exit(1);
+    }
+    while((!finded) && fread(fulano, sizeof(Fornecedor), 1, fp)){
+        if((strcmp(fulano->cnpj) == 0) && (fulano->status == 'c')){
+            finded = 1;
+        }
+    }
+    if(!finded){
+        printf("\n\tNenhum fornecedor encontrado com esse cnpj!\n");
+    }else{
+        exibeFornecedor(fulano);
+        printf("\n\n");
+        printf("\t0.....Cancelar edição\n\t");
+        scanf("%c", &opcao);
+        if(opcao != '0'){    
+            fornNovo = preencheFornecedor();
+            fseek(fp, (-1)*sizeof(Fornecedor), SEEK_CUR);
+            fwrite(fornNovo, sizeof(Fornecedor), 1, fp);
+            printf("\n\tFornecedor alterado com sucesso!\n\t");
+        }
+    }
+    
+    fclose(fp);
+    free(fulano);
+    free(fornNovo);
+}
+
+void excluirFornecedor(char *cnpj){
+    FILE* fp;
+    Fornecedor* fulano;
+    int finded = 0;
+    char opcao;
+
+    fulano = (Fornecedor*)malloc(sizeof(Fornecedor));
+
+    limpaTexto(cnpj);
+    fp = fopen("./arquivos/produtos.dat","r+b");
+    if(fp == NULL){
+        printf("\n\t404! \n\tErro na abertura do arquivo!");
+        exit(1);
+    }
+    while((!finded) && fread(fulano, sizeof(Fornecedor), 1, fp)){
+        if((strcmp(fulano-> cnpj) == 0) && (fulano->status == 'c')){
+            finded = 1;
+        }
+    }
+    if(!finded){
+        printf("\n\tNenhum fornecedor encontrado com esse cnpj!\n");
+    }else{
+        exibeProduto(fulano);
+        printf("\n\n");
+        printf("\t0.....Cancelar\n\t");
+        scanf("%c", &opcao);
+        if(opcao != '0'){
+            fulano->status = '0';
+            fseek(fp, (-1)*sizeof(Fornecedor), SEEK_CUR);
+            fwrite(fulano, sizeof(Fornecedor), 1, fp);
+            printf("\n\tFornecedor excluído!\n\t");
+        }
+    }
+    
+    fclose(fp);
+    free(fulano);
+} */
+
+
 void editarFornecedor(void){
     
     char cnpj[20];
