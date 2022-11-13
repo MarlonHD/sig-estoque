@@ -18,6 +18,10 @@ void telaDeletarFornecedor(void);
 Fornecedor* preencheFornecedor(void);
 void gravaFornecedor(Fornecedor*);
 void exibeFornecedor(Fornecedor*);
+void buscarFornecedorNome(char*);
+int  isFornecedorCad(char*);
+void atualizaFornecedor(char*);
+void excluirFornecedor(char*);
 
 //Funções de entrada de dados do fornecedor
 void cadastrarFornecedor(void); 

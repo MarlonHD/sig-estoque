@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "fornecedor.h"
 #include "validacoes.h"
 
@@ -127,7 +128,7 @@ void exibeFornecedor(Fornecedor *fornecedor){
     printf("\t%s", fornecedor->telefone);
 }
 
-/*
+
 void buscarFornecedorNome(char *nome){
     FILE* fp;
     Fornecedor* fulano;
@@ -167,7 +168,7 @@ int isFornecedorCad(char *cnpj){
         exit(1);
     }
     while((!finded) && fread(fulano, sizeof(Fornecedor), 1, fp)){
-        if((strcmp(fulano->cnpj) == 0) && (fulano->status == 'c')){
+        if((strcmp(fulano->cnpj, cnpj) == 0) && (fulano->status == 'c')){
             finded = 1;
         }
     }
@@ -194,7 +195,7 @@ void atualizaFornecedor(char *cnpj){
         exit(1);
     }
     while((!finded) && fread(fulano, sizeof(Fornecedor), 1, fp)){
-        if((strcmp(fulano->cnpj) == 0) && (fulano->status == 'c')){
+        if((strcmp(fulano->cnpj, cnpj) == 0) && (fulano->status == 'c')){
             finded = 1;
         }
     }
@@ -227,20 +228,20 @@ void excluirFornecedor(char *cnpj){
     fulano = (Fornecedor*)malloc(sizeof(Fornecedor));
 
     limpaTexto(cnpj);
-    fp = fopen("./arquivos/produtos.dat","r+b");
+    fp = fopen("./arquivos/fornecedores.dat","r+b");
     if(fp == NULL){
         printf("\n\t404! \n\tErro na abertura do arquivo!");
         exit(1);
     }
     while((!finded) && fread(fulano, sizeof(Fornecedor), 1, fp)){
-        if((strcmp(fulano-> cnpj) == 0) && (fulano->status == 'c')){
+        if((strcmp(fulano-> cnpj, cnpj) == 0) && (fulano->status == 'c')){
             finded = 1;
         }
     }
     if(!finded){
         printf("\n\tNenhum fornecedor encontrado com esse cnpj!\n");
     }else{
-        exibeProduto(fulano);
+        exibeFornecedor(fulano);
         printf("\n\n");
         printf("\t0.....Cancelar\n\t");
         scanf("%c", &opcao);
@@ -254,46 +255,38 @@ void excluirFornecedor(char *cnpj){
     
     fclose(fp);
     free(fulano);
-} */
+}
 
 
 void editarFornecedor(void){
     
     char cnpj[20];
-    char nome[30];
-    char email[45];
-    char numero[13];
     
     printf("\tCNPJ do fornecedor:\n\t");
-    scanf("%s", cnpj);
+    fgets(cnpj, 20, stdin);
+    
+    atualizaFornecedor(cnpj);
     getchar();
-
-    //validação
-    //se validação = ok
-        printf("\tInsira o novo nome: \n\t");
-        scanf("%s",nome);
-        getchar();
-        printf("\tNovo E-mail: \n\t");
-        scanf("%s", email);
-        getchar();
-        printf("\tInsira o novo numero: \n\t");
-        scanf("%s", numero);
-        getchar();
-
 }
 
 void procurarFornecedor(void){
     
-    char nomeFornecedor[30];
+    char nomeFornecedor[50];
+    
     printf("\tNome do fornecedor: \n\t");
-    scanf("%s", nomeFornecedor);
+    fgets(nomeFornecedor, 50, stdin);
+    
+    buscarFornecedorNome(nomeFornecedor);
     getchar();
 }
 
 void deletarFornecedor(void) {
 
     char cnpj[20];
+
     printf("\tInforme o CNPJ do fornecedor: \n\t");
-    scanf("%s", cnpj);
+    fgets(cnpj, 20, stdin);
+
+    excluirFornecedor(cnpj);
     getchar();
 }
