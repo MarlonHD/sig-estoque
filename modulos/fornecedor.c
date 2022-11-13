@@ -136,6 +136,10 @@ void buscarFornecedorNome(char *nome){
 
     fulano = (Fornecedor*)malloc(sizeof(Fornecedor));
 
+    // corretor de bug    
+    fp = fopen("./arquivos/fornecedores.dat", "ab");
+    fclose(fp);
+
     fp = fopen("./arquivos/fornecedores.dat","rb");
     if(fp == NULL){
         printf("404! \nErro na abertura do arquivo!");
@@ -160,9 +164,12 @@ int isFornecedorCad(char *cnpj){
     int finded = 0;
 
     fulano = (Fornecedor*)malloc(sizeof(Fornecedor));
+    // corretor de bug    
+    fp = fopen("./arquivos/fornecedores.dat", "ab");
+    fclose(fp);
 
     limpaTexto(cnpj);
-    fp = fopen("./arquivos/produtos.dat","rb");
+    fp = fopen("./arquivos/fornecedores.dat","rb");
     if(fp == NULL){
         printf("404! \nErro na abertura do arquivo!");
         exit(1);
@@ -187,6 +194,10 @@ void atualizaFornecedor(char *cnpj){
 
     fulano = (Fornecedor*)malloc(sizeof(Fornecedor));
     fornNovo = (Fornecedor*)malloc(sizeof(Fornecedor));
+
+    // corretor de bug    
+    fp = fopen("./arquivos/fornecedores.dat", "ab");
+    fclose(fp);
 
     limpaTexto(cnpj);
     fp = fopen("./arquivos/fornecedores.dat","r+b");
