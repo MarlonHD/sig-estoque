@@ -15,7 +15,7 @@ void telaBuscarProduto(void);
 void telaEditarProduto(void);
 void telaDeletarProduto(void);
 
-Produto* preencheProduto(void);
+Produto* preencheProduto(char); // parametro char == 'c' para cadastro || 'e' para edição
 void gravaProduto(Produto*);
 void exibeProduto(Produto*);
 void buscarProdutoNome(char*);

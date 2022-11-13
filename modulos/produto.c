@@ -3,6 +3,7 @@
 #include <string.h>
 #include "produto.h"
 #include "validacoes.h"
+#include "fornecedor.h"
 
 typedef struct produto Produto;
 
@@ -83,41 +84,58 @@ void cadastrarProduto(void){
     
     Produto* prod;
     
-    prod = preencheProduto();
-    gravaProduto(prod);
-    exibeProduto(prod);
-    getchar();
+    prod = preencheProduto('c');
+    if(prod!=NULL){
+        gravaProduto(prod);
+        exibeProduto(prod);
+        getchar();
+    }
     free(prod);
 }
 
-Produto* preencheProduto(void){
+Produto* preencheProduto(char opcao){
     Produto *prod;
     prod = (Produto*) malloc(sizeof(Produto));
+    char cancel = '1';
 
     do{
         printf("\tDigite o nome do produto: \n\t");
         fgets(prod->nomeProduto, 50, stdin);
     }while(!isNomeValid(prod->nomeProduto));
-    // validação do cnpj após finalizar
-    printf("\tDigite o CNPJ do fornecedor (apenas números): \n\t");
-    fgets(prod->cnpjFornecedor, 20, stdin);
-    limpaTexto(prod->cnpjFornecedor);
-
+    
     do{
-        printf("\tDigite a categoria do produto: \n\t");
-        fgets(prod->categoria, 30, stdin);
-    }while(!isNomeValid(prod->categoria));
-
-    do{
-        printf("\tDigite o código de barras do produto: \n\t");
-        fgets(prod->codProduto, 20, stdin);
-        if(isProdutoCad(prod->codProduto)){
-            printf("\n\tJá existe um produto cadastrado com esse código!!\n");
+        printf("\tDigite o CNPJ do fornecedor (apenas números): \n\t");
+        fgets(prod->cnpjFornecedor, 20, stdin);
+        limpaTexto(prod->cnpjFornecedor);
+        if(!isFornecedorCad(prod->cnpjFornecedor)){
+            printf("\n\tCNPJ não cadastrado no sistema!\n");
+            printf("\tDeseja cancelar a ação? (Digite: 0)\n\t");
+            scanf("%c", &cancel);
         }
-    }while(!validBarCode(prod->codProduto) || isProdutoCad(prod->codProduto));
+    }while((!isFornecedorCad(prod->cnpjFornecedor)) && (cancel!='0'));
+    
+    if(cancel != '0'){
+        do{
+            printf("\tDigite a categoria do produto: \n\t");
+            fgets(prod->categoria, 30, stdin);
+        }while(!isNomeValid(prod->categoria));
 
+        if(opcao == 'c'){
+            do{
+                printf("\tDigite o código de barras do produto: \n\t");
+                fgets(prod->codProduto, 20, stdin);
+                if(isProdutoCad(prod->codProduto)){
+                    printf("\n\tJá existe um produto cadastrado com esse código!!\n");
+                    printf("\tDeseja cancelar o cadastro? (Digite: 0)\n\t");
+                    scanf("%c", &cancel);
+                }
+            }while((!validBarCode(prod->codProduto) || isProdutoCad(prod->codProduto)) && (cancel!='0'));
+        }
+    }else{
+        return NULL;
+    }
+    
     prod->sit = '1';
-
     return prod;
 }
 
@@ -146,6 +164,9 @@ void buscarProdutoNome(char *nome){
     int cont = 0;
 
     prod = (Produto*)malloc(sizeof(Produto));
+    // corretor de bug    
+    fp = fopen("./arquivos/produtos.dat", "ab");
+    fclose(fp);
 
     fp = fopen("./arquivos/produtos.dat","rb");
     if(fp == NULL){
@@ -194,7 +215,7 @@ void atualizaProduto(char *codigo){
     Produto* prod;
     Produto* prodNovo;
     int finded = 0;
-    char opcao;
+    char opcao = '1';
 
     prod = (Produto*)malloc(sizeof(Produto));
     prodNovo = (Produto*)malloc(sizeof(Produto));
@@ -218,7 +239,7 @@ void atualizaProduto(char *codigo){
         printf("\t0.....Cancelar edição\n\t");
         scanf("%c", &opcao);
         if(opcao != '0'){    
-            prodNovo = preencheProduto();
+            prodNovo = preencheProduto('e');
             fseek(fp, (-1)*sizeof(Produto), SEEK_CUR);
             fwrite(prodNovo, sizeof(Produto), 1, fp);
             printf("\n\tProduto alterado com sucesso!\n\t");
@@ -234,7 +255,7 @@ void excluirProduto(char *codigo){
     FILE* fp;
     Produto* prod;
     int finded = 0;
-    char opcao;
+    char opcao = '1';
 
     prod = (Produto*)malloc(sizeof(Produto));
 
