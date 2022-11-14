@@ -93,12 +93,34 @@ Registro* preencheRegistro(char tipo){ //tipo == 'i' ? input : output
     reg = (Registro*)malloc(sizeof(Registro));
     reg->tempo = tempo;
     reg->conteudo = preencheEstoque();
-    
-    if(tipo == 'i'){
-        reg->tipo = tipo;
-    }
+    reg->tipo = tipo;
 
     return reg;
+}
+
+void gravaRegistro(Registro *reg){
+    FILE* fp;
+    fp = fopen("./arquivos/registros.dat", "ab");
+
+    if(fp == NULL){
+        printf("Erro ao criar o arquivo!");
+        exit(1);
+    }
+    fwrite(reg, sizeof(Registro), 1, fp);
+    fclose(fp);
+}
+
+void exibeRegistro(Registro *reg){
+    printf("\n\t#############\n");
+    
+    if(reg->tipo == 'i'){
+        printf("\tTipo: Entrada");
+    }else if(reg->tipo == 'o'){
+        printf("\tTipo: Saída");
+    }
+    printf("\n\tProduto: %s", reg->conteudo->codProduto);
+    printf("\tQuantidade: %d", reg->conteudo->quantidade);
+    printf("\n\tHorário: %s", ctime(&reg->tempo));
 }
 
 Estoque* preencheEstoque(void){
@@ -151,15 +173,19 @@ void exibeEstoque(Estoque *est){
 
 void cadastrarEstoque(void){    //Função cadastrar estoque
     
-    Estoque *est;
+    //Estoque *est;
+    Registro *reg;
 
-    est = preencheEstoque();
-    gravaEstoque(est);
-    exibeEstoque(est);
+    //est = preencheEstoque();
+    //gravaEstoque(est);
+    //exibeEstoque(est);
+    reg = preencheRegistro('i');
+    gravaRegistro(reg);
+    exibeRegistro(reg);
     getchar();
 
-    free(est);
- 
+    //free(est);
+    free(reg);
 }
 void procurarEstoque(void){
     
