@@ -101,13 +101,16 @@ Registro* preencheRegistro(char tipo){ //tipo == 'i' ? input : output
 void gravaRegistro(Registro *reg){
     FILE* fp;
     fp = fopen("./arquivos/registros.dat", "ab");
-
     if(fp == NULL){
         printf("Erro ao criar o arquivo!");
         exit(1);
     }
-    fwrite(reg, sizeof(Registro), 1, fp);
-    fclose(fp);
+    if(gravaEstoque(reg)){
+        fwrite(reg, sizeof(Registro), 1, fp);
+        fclose(fp);
+    }else{
+        fclose(fp);
+    }
 }
 
 void exibeRegistro(Registro *reg){
@@ -153,16 +156,96 @@ Estoque* preencheEstoque(void){
     return est;
 }
 
-void gravaEstoque(Estoque *est){
+int isOnEstoque(char *codigo){
     FILE* fp;
-    fp = fopen("./arquivos/estoque.dat", "ab");
+    Estoque* est;
+    int finded = 0;
 
+    //correção de bug
+    fp = fopen("./arquivos/estoque.dat", "ab");
+    fclose(fp);
+
+    est = (Estoque*)malloc(sizeof(Estoque));
+
+    limpaTexto(codigo);
+    fp = fopen("./arquivos/estoque.dat","rb");
     if(fp == NULL){
-        printf("Erro ao criar o arquivo!");
+        printf("404! \nErro na abertura do arquivo!");
         exit(1);
     }
-    fwrite(est, sizeof(Estoque), 1, fp);
+    while((!finded) && fread(est, sizeof(Estoque), 1, fp)){
+        if((strcmp(est->codProduto, codigo) == 0)){
+            finded = 1;
+        }
+    }
     fclose(fp);
+    free(est);
+
+    return finded;
+}
+
+int gravaEstoque(Registro *reg){
+    FILE* fp;
+
+    Estoque *est;
+    est = (Estoque*)malloc(sizeof(Estoque));
+    int ok = 1;
+
+
+    if(isOnEstoque(reg->conteudo->codProduto)){
+        int finded = 0;
+        fp = fopen("./arquivos/estoque.dat", "r+b");
+        if(fp == NULL){
+            printf("Erro ao abrir o arquivo!");
+            exit(1);
+        }
+        while((!finded) && fread(est, sizeof(Estoque), 1, fp)){
+            if((strcmp(est->codProduto, reg->conteudo->codProduto) == 0)){
+                finded = 1;
+            }
+        }
+        if(reg->tipo == 'i'){
+            est->quantidade = est->quantidade + reg->conteudo->quantidade;
+        }else if(reg->tipo == 'o'){
+            if(est->quantidade < reg->conteudo->quantidade){
+                ok = 0;
+            }else{
+                est->quantidade = est->quantidade - reg->conteudo->quantidade;
+            }   
+        }
+        if(ok){
+            fseek(fp, (-1)*sizeof(Estoque), SEEK_CUR);
+            fwrite(est, sizeof(Estoque), 1, fp);
+            fclose(fp);
+        }else{
+            fclose(fp);
+            return 0;
+        }
+        
+    }else{
+        fp = fopen("./arquivos/estoque.dat", "ab");
+        if(fp == NULL){
+            printf("404! \nErro na abertura do arquivo!");
+            exit(1);
+        }
+        if(reg->tipo == 'i'){
+            est->quantidade = est->quantidade + reg->conteudo->quantidade;
+        }else if(reg->tipo == 'o'){
+            if(est->quantidade < reg->conteudo->quantidade){
+                ok = 0;
+            }else{
+                est->quantidade = est->quantidade - reg->conteudo->quantidade;
+            }   
+        }
+        if(ok){
+            fwrite(est, sizeof(Estoque), 1, fp);
+            fclose(fp);
+        }else{
+            fclose(fp);
+            return 0;
+        }
+    }
+    return 1;
 }
 
 void exibeEstoque(Estoque *est){
@@ -172,19 +255,16 @@ void exibeEstoque(Estoque *est){
 }
 
 void cadastrarEstoque(void){    //Função cadastrar estoque
-    
-    //Estoque *est;
     Registro *reg;
 
-    //est = preencheEstoque();
     //gravaEstoque(est);
-    //exibeEstoque(est);
-    reg = preencheRegistro('i');
-    gravaRegistro(reg);
-    exibeRegistro(reg);
-    getchar();
 
-    //free(est);
+    reg = preencheRegistro('i');
+    if(reg != NULL){
+        gravaRegistro(reg);
+        exibeRegistro(reg);
+        getchar();
+    }
     free(reg);
 }
 void procurarEstoque(void){

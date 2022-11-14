@@ -20,9 +20,10 @@ void telaProcurarEstoque(void);
 void telaRetirarEstoque(void);
 
 Estoque* preencheEstoque(void);
-void gravaEstoque(Estoque*);
+int gravaEstoque(Registro*);
 void exibeEstoque(Estoque*);
 int quantidade(char*);
+int isOnEstoque(char*);
 
 Registro* preencheRegistro(char);
 void gravaRegistro(Registro*);
