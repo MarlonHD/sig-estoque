@@ -12,10 +12,9 @@ void moduloEstoque(void) {
     printf("###                = = = Sistema de Controle de Estoques = = =               ###\n");
     printf("###                           = Módulo Estoque =                             ###\n");
     printf("###                                                                          ###\n");
-    printf("###               1. Cadastrar Estoque                                       ###\n");
-    printf("###               2. Procurar Estoque                                        ###\n");
-    printf("###               3. Editar Estoque                                          ###\n");
-    printf("###               4. Deletar Estoque                                         ###\n");
+    printf("###               1. Cadastrar no Estoque                                    ###\n");
+    printf("###               2. Procurar no Estoque                                     ###\n");
+    printf("###               3. Retirar do Estoque                                      ###\n");
     printf("###               0. Voltar                                                  ###\n");
     printf("###                                                                          ###\n");
     printf("################################################################################\n");
@@ -42,19 +41,6 @@ void telaProcurarEstoque(void){
     printf("###                                                                          ###\n");
     printf("###                = = = Sistema de Controle de Estoques = = =               ###\n");
     printf("###                            = Buscar Estoque =                            ###\n");
-    printf("###                                                                          ###\n");
-    printf("###                                                                          ###\n");
-    printf("################################################################################\n");
-    printf("\n");
-}
-
-void telaEditarEstoque(void){
-    system("clear||cls");
-    printf("\n");
-    printf("################################################################################\n");
-    printf("###                                                                          ###\n");
-    printf("###                = = = Sistema de Controle de Estoques = = =               ###\n");
-    printf("###                            = Editar Estoque =                            ###\n");
     printf("###                                                                          ###\n");
     printf("###                                                                          ###\n");
     printf("################################################################################\n");
@@ -120,18 +106,6 @@ void exibeEstoque(Estoque *est){
     printf("\tquantidade: %d \n", est->quantidade);
 }
 
-void editarEstoque(void){
-       
-    int codProduto;
-    int idProduto;
-    printf("\tCódigo do Produto:\n\t ");  //provisório
-    scanf("%d", &codProduto);
-    getchar();
-    printf("\tInforme o novo ID do Produto:\n\t");
-    scanf("%d", &idProduto);
-    getchar();
-
-}
 
 void procurarEstoque(void){
     

@@ -77,12 +77,8 @@ int main(void){
                         procurarEstoque();
                         break;
                     case '3':
-                        telaEditarEstoque();
-                        editarEstoque();
-                        break;
-                    case '4':
-                        telaDeletarEstoque();
-                        deletarEstoque();
+                        telaRetirarEstoque();
+                        retirarEstoque();
                         break;
                     case '0':
                         break;
