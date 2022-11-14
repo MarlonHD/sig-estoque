@@ -5,19 +5,30 @@ struct estoque{
     int quantidade;
 };
 
+typedef struct registro Registro;
+
+struct registro{
+    Estoque* conteudo;
+    time_t tempo;
+    char tipo;  // 'i' = entrada(input) 'o' = saida(output) || 1, 0 respectivamente
+};
+
 void moduloEstoque(void);
 
 void telaCadastrarEstoque(void);
 void telaProcurarEstoque(void);
-void telaEditarEstoque(void);
-void telaDeletarEstoque(void);
+void telaRetirarEstoque(void);
 
 Estoque* preencheEstoque(void);
 void gravaEstoque(Estoque*);
 void exibeEstoque(Estoque*);
+int quantidade(char*);
+
+Registro* preencheRegistro(char);
+void gravaRegistro(Registro*);
+void exibeRegistro(Registro*);
 
 //Funções módulo estoque
 void cadastrarEstoque(void);
-void editarEstoque(void);
 void procurarEstoque(void);
-void deletarEstoque(void);
+void retirarEstoque(void);
