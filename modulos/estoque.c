@@ -229,18 +229,9 @@ int gravaEstoque(Registro *reg){
             exit(1);
         }
         if(reg->tipo == 'i'){
-            est->quantidade = est->quantidade + reg->conteudo->quantidade;
-        }else if(reg->tipo == 'o'){
-            if(est->quantidade < reg->conteudo->quantidade){
-                ok = 0;
-            }else{
-                est->quantidade = est->quantidade - reg->conteudo->quantidade;
-            }   
-        }
-        if(ok){
-            fwrite(est, sizeof(Estoque), 1, fp);
+            fwrite(reg->conteudo, sizeof(Estoque), 1, fp);
             fclose(fp);
-        }else{
+        }else if(reg->tipo == 'o'){
             fclose(fp);
             return 0;
         }
