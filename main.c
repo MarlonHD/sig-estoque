@@ -70,7 +70,7 @@ int main(void){
                 switch (op1){
                     case '1':
                         telaCadastrarEstoque();
-                        cadastrarEstoque();
+                        alterarEstoque('i');
                         break;
                     case '2':
                         telaProcurarEstoque();
@@ -78,7 +78,7 @@ int main(void){
                         break;
                     case '3':
                         telaRetirarEstoque();
-                        retirarEstoque();
+                        alterarEstoque('o');
                         break;
                     case '0':
                         break;

@@ -254,12 +254,12 @@ void exibeEstoque(Estoque *est){
     printf("\tquantidade: %d \n", est->quantidade);
 }
 
-void cadastrarEstoque(void){    //Função cadastrar estoque
+void alterarEstoque(char tipo){    //Função cadastrar estoque
     Registro *reg;
 
     //gravaEstoque(est);
 
-    reg = preencheRegistro('i');
+    reg = preencheRegistro(tipo);
     if(reg != NULL){
         gravaRegistro(reg);
         exibeRegistro(reg);
@@ -269,16 +269,14 @@ void cadastrarEstoque(void){    //Função cadastrar estoque
 }
 void procurarEstoque(void){
     
-    int idProduto;
-    printf("\tInforme o ID do Produto: \n\t");
-    scanf("%d", &idProduto);
+    char codigo[20];
+    printf("\n\tDigite o codigo do produto que está sendo buscado:\n\t");
+    fgets(codigo, 20, stdin);
+    if(isOnEstoque(codigo)){
+        printf("\n\n\tQuantidade do produto no estoque: %d", quantidade(codigo));
+    }else{
+        printf("\n\n\tQuantidade do produto no estoque: 0");
+    }
     getchar();
 }
 
-void retirarEstoque(void) {
-
-    int codProduto;
-    printf("\tCódigo do produto a ser deletado: \n\t");
-    scanf("%d", &codProduto);
-    getchar();
-}

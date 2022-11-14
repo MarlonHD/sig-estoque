@@ -30,6 +30,5 @@ void gravaRegistro(Registro*);
 void exibeRegistro(Registro*);
 
 //Funções módulo estoque
-void cadastrarEstoque(void);
+void alterarEstoque(char);
 void procurarEstoque(void);
-void retirarEstoque(void);
