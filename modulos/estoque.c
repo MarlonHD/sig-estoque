@@ -77,11 +77,14 @@ int quantidade(char *codigo){
         printf("404! \nErro na abertura do arquivo!");
         exit(1);
     }
+    limpaTexto(codigo);
     while(fread(est, sizeof(Estoque), 1, fp)){
-        if(strcmp(est->codProduto, codigo)){
+        if(strcmp(est->codProduto, codigo) == 0){
+            fclose(fp);
             return est->quantidade;
         }
     }
+    fclose(fp);
     return -1;
 }
 
@@ -94,6 +97,10 @@ Registro* preencheRegistro(char tipo){ //tipo == 'i' ? input : output
     reg->tempo = tempo;
     reg->conteudo = preencheEstoque();
     reg->tipo = tipo;
+
+    if(reg->conteudo == NULL){
+        return NULL;
+    }
 
     return reg;
 }
@@ -259,12 +266,13 @@ void alterarEstoque(char tipo){    //Função cadastrar estoque
     free(reg);
 }
 void procurarEstoque(void){
-    
+    int quant;
     char codigo[20];
     printf("\n\tDigite o codigo do produto que está sendo buscado:\n\t");
     fgets(codigo, 20, stdin);
     if(isOnEstoque(codigo)){
-        printf("\n\n\tQuantidade do produto no estoque: %d", quantidade(codigo));
+        quant = quantidade(codigo);
+        printf("\n\n\tQuantidade do produto no estoque: %d", quant);
     }else{
         printf("\n\n\tQuantidade do produto no estoque: 0");
     }
