@@ -190,6 +190,9 @@ int isProdutoCad(char *codigo){
     FILE* fp;
     Produto* prod;
     int finded = 0;
+    // corretor de bug    
+    fp = fopen("./arquivos/produtos.dat", "ab");
+    fclose(fp);
 
     prod = (Produto*)malloc(sizeof(Produto));
 
@@ -216,6 +219,10 @@ void atualizaProduto(char *codigo){
     Produto* prodNovo;
     int finded = 0;
     char opcao = '1';
+
+    // corretor de bug    
+    fp = fopen("./arquivos/produtos.dat", "ab");
+    fclose(fp);
 
     prod = (Produto*)malloc(sizeof(Produto));
     prodNovo = (Produto*)malloc(sizeof(Produto));
@@ -256,6 +263,10 @@ void excluirProduto(char *codigo){
     Produto* prod;
     int finded = 0;
     char opcao = '1';
+
+    // corretor de bug    
+    fp = fopen("./arquivos/produtos.dat", "ab");
+    fclose(fp);
 
     prod = (Produto*)malloc(sizeof(Produto));
 
