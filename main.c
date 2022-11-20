@@ -112,7 +112,7 @@ int main(void){
                 op1 = escolherOpcao();
                 switch(op1){
                     case '1':
-                        relatorioCompleto();
+                        estoqueCompleto();
                         break;
                     case '0':
                         break;

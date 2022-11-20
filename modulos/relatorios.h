@@ -1,2 +1,4 @@
 void moduloRelatorios(void);
-void relatorioCompleto(void);
+void estoqueCompleto(void);
+
+void listarEstoque(void);
