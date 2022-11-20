@@ -26,7 +26,7 @@ int quantidade(char*);
 int isOnEstoque(char*);
 
 Registro* preencheRegistro(char);
-void gravaRegistro(Registro*);
+int gravaRegistro(Registro*);
 void exibeRegistro(Registro*);
 
 //Funções módulo estoque

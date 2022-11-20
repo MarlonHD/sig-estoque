@@ -105,7 +105,7 @@ Registro* preencheRegistro(char tipo){ //tipo == 'i' ? input : output
     return reg;
 }
 
-void gravaRegistro(Registro *reg){
+int gravaRegistro(Registro *reg){
     FILE* fp;
     fp = fopen("./arquivos/registros.dat", "ab");
     if(fp == NULL){
@@ -115,8 +115,10 @@ void gravaRegistro(Registro *reg){
     if(gravaEstoque(reg)){
         fwrite(reg, sizeof(Registro), 1, fp);
         fclose(fp);
+        return 1;
     }else{
         fclose(fp);
+        return 0;
     }
 }
 
@@ -255,12 +257,13 @@ void exibeEstoque(Estoque *est){
 void alterarEstoque(char tipo){    //Função cadastrar estoque
     Registro *reg;
 
-    //gravaEstoque(est);
-
     reg = preencheRegistro(tipo);
     if(reg != NULL){
-        gravaRegistro(reg);
-        exibeRegistro(reg);
+        if(gravaRegistro(reg)){
+            exibeRegistro(reg);
+        }else{
+            printf("\n\tQuantidade insuficiente em estoque!\n\t");
+        }
         getchar();
     }
     free(reg);
