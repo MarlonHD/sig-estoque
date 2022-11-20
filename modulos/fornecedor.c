@@ -99,8 +99,10 @@ Fornecedor* preencheFornecedor(void){
         printf("\tE-mail: \n\t");
         fgets(fulano->email, 50, stdin);
     }while(!isEmailValid(fulano->email));
-    printf("\tInsira o CNPJ do Fornecedor: \n\t");
-    fgets(fulano->cnpj, 20, stdin);
+    do{
+        printf("\tInsira o CNPJ do Fornecedor: \n\t");
+        fgets(fulano->cnpj, 20, stdin);
+    }while(!validaCnpj(fulano->cnpj));    
     printf("\tInsira o número de telefone: \n\t");
     fgets(fulano->telefone, 20, stdin);
     fulano->status = 'c';

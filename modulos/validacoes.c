@@ -61,14 +61,12 @@ int main(void){
     return 0;
 }*/
 
-/*
-void validacnpj(void){
-    char cnpj[14];// Variável cnpj
+
+int validaCnpj(char*cnpj){
+
     int cnpjInt[14]; // Vetor inteiro cnpj
     int somaDV1 , somaDV2, divisao1, divisao2, DV1, DV2;
-   
-    printf("Cnpj (Apenas numeros): "); 
-    scanf("%s", &cnpj);  // Pega o cnpj
+
 
     for(int i = 0; i < 14; i++){  // Converte o cnpj pra int
         cnpjInt[i] = cnpj[i] - 48;
@@ -82,11 +80,11 @@ void validacnpj(void){
 
     divisao1 = (somaDV1 % 11); //resto
 
-    if (divisao1 < 2) 
+    if (divisao1 < 2){ 
         DV1 = 0;
-    else
+    }else{
         DV1 = (11 - divisao1);
-
+    }
 
     somaDV2 =((cnpjInt[0] * 6) + (cnpjInt[1] * 5) +(cnpjInt[2] * 4) +  // Contas do Dígito Verificador 2
         (cnpjInt[3] * 3) + (cnpjInt[4] * 2) + (cnpjInt[5] * 9) +
@@ -94,18 +92,19 @@ void validacnpj(void){
         (cnpjInt[9] * 5) + (cnpjInt[10] * 4) + (cnpjInt[11] * 3) + (DV1 * 2));
     divisao2 = (somaDV2 % 11); //resto
 
-    if (divisao2 < 2) 
+    if (divisao2 < 2){ 
         DV2 = 0;
-    else
+    }else{
         DV2 = (11 - divisao2);
-    
+    }
 
     if (DV1 == cnpjInt[12] && DV2 == cnpjInt[13])
         return 1;
-    else
-        return 0;
+
+    return 0;
+   
 }
-*/
+
 
 //---| Validações String |---
 int isDigit(char n){
