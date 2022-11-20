@@ -11,24 +11,17 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <locale.h>
+#include <string.h>
 #include "modulos/produto.h"
 #include "modulos/estoque.h"
 #include "modulos/fornecedor.h"
 #include "modulos/relatorios.h"
 #include "modulos/validacoes.h"
+#include "modulos/auxiliar.h"
 
-//Assinatura
-void telaPrincipal(void);
-void tela_sobre(void);
-    
-
-
-char escolherOpcao(void);
 
 
 int main(void){
-    setlocale(LC_ALL,"Portuguese_Brazil");
     const char SAIR = '0';
     char op;
     char op1 = '0';
@@ -145,57 +138,4 @@ int main(void){
         }
     }while(op != SAIR);
     return 0;
-}
-
-//Funções
-void telaPrincipal(void) {
-    //char op;
-    setlocale(LC_ALL,"Portuguese_Brazil");
-    system("clear||cls");
-    printf("\n");
-    printf("################################################################################\n");
-    printf("###                                                                          ###\n");
-    printf("###                = = = Sistema de Controle de Estoques = = =               ###\n");
-    printf("###                                                                          ###\n");
-    printf("###               1. Módulo Produtos                                         ###\n");
-    printf("###               2. Módulo Estoque                                          ###\n");
-    printf("###               3. Módulo Fornecedores                                     ###\n");
-    printf("###               4. Módulo Relatórios                                       ###\n");
-    printf("###               5. Sobre                                                   ###\n");
-    printf("###               0. Sair                                                    ###\n");
-    printf("###                                                                          ###\n");
-    printf("################################################################################\n");
-    //printf("###                                                                     ###\n");
-    //printf("###            Digite sua opção: ");
-    //scanf("%[0-9]", &op);
-    //getchar();
-    printf("\n");
-}
-
-void tela_sobre(void) {
-    system("clear||cls");
-    printf("\n");
-    printf("################################################################################\n");
-    printf("###                                                                          ###\n");
-    printf("###          = = = = = Sistema de Controle de Estoques = = = = =             ###\n");
-    printf("###                                                                          ###\n");
-    printf("###   Pojeto de um programa de controle de estoques, desenvolvido em C e     ###\n");
-    printf("###   durante a disciplina DCT1106 - Programação, do curso de Bacharelado    ###\n");
-    printf("###   em Sistemas de Informação da UFRN. O projeto tem como finalidade a     ###\n");
-    printf("###   criação de um programa com as funcionalidades básicas para facilitar   ###\n");
-    printf("###   a administração/controle do inventário de uma empresa.                 ###\n");
-    printf("###                                                                          ###\n");
-    printf("################################################################################\n");
-    printf("\n");
-    printf("\t\t     #Pressione <ENTER> para seguir... \n");
-    getchar();
-}
-
-
-char escolherOpcao(void){
-    char opcao;
-    printf("\tDigite sua opção: ");
-    scanf("%[0-9]",&opcao);
-    getchar();
-    return opcao;
 }
