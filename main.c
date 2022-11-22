@@ -114,6 +114,9 @@ int main(void){
                     case '1':
                         estoqueCompleto();
                         break;
+                    case '2':
+                        produtosCat();
+                        break;
                     case '4':
                         histRegistros();
                         break;

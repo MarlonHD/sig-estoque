@@ -53,7 +53,7 @@ void estoqueCompleto(void){
 
 void histRegistros(void){
     system("clear||cls");
-    printf("\n\t");
+    printf("\n");
 
     FILE* fp;
     Registro* reg;
@@ -80,4 +80,35 @@ void histRegistros(void){
     getchar();
     fclose(fp);
     free(reg);
+}
+
+void produtosCat(void){
+    system("clear||cls");
+    printf("\n");
+
+    FILE* fp;
+    Produto* prod;
+    prod = (Produto*)malloc(sizeof(Produto));
+    int cont = 0;
+
+    fp = fopen("./arquivos/produtos.dat", "ab");
+    fclose(fp);
+
+    fp = fopen("./arquivos/produtos.dat", "rb");
+    if(fp == NULL){
+        printf("\n\tFalha na abertura do arquivo!");
+        getchar();
+        exit(1);
+    }
+    while(fread(prod, sizeof(Produto), 1, fp)==1){
+        exibeProduto(prod);
+        cont++;
+    }
+    if(!cont){
+        printf("\n\tNão há elementos a serem exibidos!");
+        printf("\n\tPressione qualquer tecla para continuar...");
+    }
+    getchar();
+    fclose(fp);
+    free(prod);
 }
