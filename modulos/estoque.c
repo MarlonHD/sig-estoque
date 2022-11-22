@@ -92,15 +92,17 @@ Registro* preencheRegistro(char tipo){ //tipo == 'i' ? input : output
     Registro* reg;
     time_t tempo;
     time(&tempo);
+    Estoque* est;
 
     reg = (Registro*)malloc(sizeof(Registro));
     reg->tempo = tempo;
-    reg->conteudo = preencheEstoque();
-    reg->tipo = tipo;
-
-    if(reg->conteudo == NULL){
+    est = preencheEstoque();
+    if(est == NULL){
         return NULL;
     }
+    strcpy(reg->codProduto, est->codProduto);
+    reg->quantidade = est->quantidade;
+    reg->tipo = tipo;
 
     return reg;
 }
@@ -130,8 +132,8 @@ void exibeRegistro(Registro *reg){
     }else if(reg->tipo == 'o'){
         printf("\tTipo: Saída");
     }
-    printf("\n\tProduto: %s", reg->conteudo->codProduto);
-    printf("\tQuantidade: %d", reg->conteudo->quantidade);
+    printf("\n\tProduto: %s", reg->codProduto);
+    printf("\tQuantidade: %d", reg->quantidade);
     printf("\n\tHorário: %s", ctime(&reg->tempo));
 }
 
@@ -200,8 +202,11 @@ int gravaEstoque(Registro *reg){
     est = (Estoque*)malloc(sizeof(Estoque));
     int ok = 1;
 
+    if(reg->quantidade <= 0){
+        return 0;
+    }
 
-    if(isOnEstoque(reg->conteudo->codProduto)){
+    if(isOnEstoque(reg->codProduto)){
         int finded = 0;
         fp = fopen("./arquivos/estoque.dat", "r+b");
         if(fp == NULL){
@@ -209,17 +214,17 @@ int gravaEstoque(Registro *reg){
             exit(1);
         }
         while((!finded) && fread(est, sizeof(Estoque), 1, fp)){
-            if((strcmp(est->codProduto, reg->conteudo->codProduto) == 0)){
+            if((strcmp(est->codProduto, reg->codProduto) == 0)){
                 finded = 1;
             }
         }
         if(reg->tipo == 'i'){
-            est->quantidade = est->quantidade + reg->conteudo->quantidade;
+            est->quantidade = est->quantidade + reg->quantidade;
         }else if(reg->tipo == 'o'){
-            if(est->quantidade < reg->conteudo->quantidade){
+            if(est->quantidade < reg->quantidade){
                 ok = 0;
             }else{
-                est->quantidade = est->quantidade - reg->conteudo->quantidade;
+                est->quantidade = est->quantidade - reg->quantidade;
             }   
         }
         if(ok){
@@ -238,7 +243,9 @@ int gravaEstoque(Registro *reg){
             exit(1);
         }
         if(reg->tipo == 'i'){
-            fwrite(reg->conteudo, sizeof(Estoque), 1, fp);
+            strcpy(est->codProduto, reg->codProduto);
+            est->quantidade = reg->quantidade;
+            fwrite(est, sizeof(Estoque), 1, fp);
             fclose(fp);
         }else if(reg->tipo == 'o'){
             fclose(fp);

@@ -10,7 +10,8 @@ struct estoque{
 typedef struct registro Registro;
 
 struct registro{
-    Estoque* conteudo;
+    char codProduto[20];
+    int quantidade;
     time_t tempo;
     char tipo;  // 'i' = entrada(input) 'o' = saida(output) || 1, 0 respectivamente
 };
