@@ -28,7 +28,7 @@ void moduloRelatorios(void) {
 void estoqueCompleto(void){
     system("clear||cls");
     printf("\n");
-    
+
     FILE* fp;
     Estoque* est;
     est = (Estoque*)malloc(sizeof(Estoque));
@@ -48,6 +48,7 @@ void estoqueCompleto(void){
     }
     getchar();
     fclose(fp);
+    free(est);
 }
 
 void histRegistros(void){
@@ -78,4 +79,5 @@ void histRegistros(void){
     }
     getchar();
     fclose(fp);
+    free(reg);
 }
