@@ -81,8 +81,12 @@ void cadastrarFornecedor(void){
 
     Fornecedor* fulano;
     fulano = preencheFornecedor();
-    gravaFornecedor(fulano);
-    exibeFornecedor(fulano);
+    if(fulano != NULL){
+        gravaFornecedor(fulano);
+        exibeFornecedor(fulano);
+    }else{
+        printf("\n\tOperação cancelada!\n");
+    }
     getchar();
     free(fulano);
 }   
@@ -90,24 +94,34 @@ void cadastrarFornecedor(void){
 Fornecedor* preencheFornecedor(void){
     Fornecedor* fulano;
     fulano = (Fornecedor*) malloc(sizeof(Fornecedor));
-    
-    do{
-        printf("\tInsira o nome do Fornecedor: \n\t");
-        fgets(fulano->nome, 30, stdin);
-    }while(!isNomeValid(fulano->nome));
-    do{
-        printf("\tE-mail: \n\t");
-        fgets(fulano->email, 50, stdin);
-    }while(!isEmailValid(fulano->email));
+    char cancel = '1';
     do{
         printf("\tInsira o CNPJ do Fornecedor: \n\t");
         fgets(fulano->cnpj, 20, stdin);
-    }while(!validaCnpj(fulano->cnpj));    
-    printf("\tInsira o número de telefone: \n\t");
-    fgets(fulano->telefone, 20, stdin);
-    fulano->status = 'c';
+        if(isFornecedorCad(fulano->cnpj)){
+            printf("\n\tJá existe um fornecedor cadastrado com esse CNPJ!!\n");
+            printf("\tDeseja cancelar o cadastro? (Digite: 0)\n\t");
+            scanf("%c", &cancel);
+        }
+    }while((!validaCnpj(fulano->cnpj) || isFornecedorCad(fulano->cnpj)) && (cancel!='0'));
+    if(cancel != '0'){
+        do{
+            printf("\tInsira o nome do Fornecedor: \n\t");
+            fgets(fulano->nome, 30, stdin);
+        }while(!isNomeValid(fulano->nome));
+        do{
+            printf("\tE-mail: \n\t");
+            fgets(fulano->email, 50, stdin);
+        }while(!isEmailValid(fulano->email));
 
-    return fulano;
+        printf("\tInsira o número de telefone: \n\t");
+        fgets(fulano->telefone, 20, stdin);
+        fulano->status = 'c';
+
+        return fulano;
+    }else{
+        return NULL;
+    }
 }
 
 void gravaFornecedor(Fornecedor *fornecedor){
