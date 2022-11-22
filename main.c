@@ -117,6 +117,9 @@ int main(void){
                     case '2':
                         produtosCat();
                         break;
+                    case '3':
+                        fornecedoresCad();
+                        break;
                     case '4':
                         histRegistros();
                         break;

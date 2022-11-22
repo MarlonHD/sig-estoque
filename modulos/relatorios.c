@@ -112,3 +112,34 @@ void produtosCat(void){
     fclose(fp);
     free(prod);
 }
+
+void fornecedoresCad(void){
+    system("clear||cls");
+    printf("\n");
+
+    FILE* fp;
+    Fornecedor* forn;
+    forn = (Fornecedor*)malloc(sizeof(Fornecedor));
+    int cont = 0;
+
+    fp = fopen("./arquivos/fornecedores.dat", "ab");
+    fclose(fp);
+
+    fp = fopen("./arquivos/fornecedores.dat", "rb");
+    if(fp == NULL){
+        printf("\n\tFalha na abertura do arquivo!");
+        getchar();
+        exit(1);
+    }
+    while(fread(forn, sizeof(Fornecedor), 1, fp)==1){
+        exibeFornecedor(forn);
+        cont++;
+    }
+    if(!cont){
+        printf("\n\tNão há elementos a serem exibidos!");
+        printf("\n\tPressione qualquer tecla para continuar...");
+    }
+    getchar();
+    fclose(fp);
+    free(forn);
+}
