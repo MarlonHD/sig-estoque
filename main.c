@@ -114,10 +114,13 @@ int main(void){
                     case '1':
                         estoqueCompleto();
                         break;
+                    case '4':
+                        histRegistros();
+                        break;
                     case '0':
                         break;
                     default:
-                        if(op1 > '1' && op1 < '6'){
+                        if(op1 > '1' && op1 < '6' && op1 != '4'){
                             printf("\n\n\t\t\tEM DESENVOLVIMENTO!\n\n");
                             printf("\t\tPressione <ENTER> para continuar...\n");
                             getchar();

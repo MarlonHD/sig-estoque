@@ -40,9 +40,33 @@ void listarEstoque(void){
     fclose(fp);
 
     fp = fopen("./arquivos/estoque.dat", "rb");
-    while(fread(est, sizeof(Estoque), 1, fp)){
+    while(fread(est, sizeof(Estoque), 1, fp)==1){
         exibeEstoque(est);
     }
     getchar();
+    fclose(fp);
+}
 
+void histRegistros(void){
+    system("clear||cls");
+    printf("\n\t");
+
+    FILE* fp;
+    Registro* reg;
+    reg = (Registro*)malloc(sizeof(Registro));
+
+    fp = fopen("./arquivos/registros.dat", "ab");
+    fclose(fp);
+
+    fp = fopen("./arquivos/registros.dat", "rb");
+    if(fp == NULL){
+        printf("\n\tFalha na abertura do arquivo!");
+        getchar();
+        exit(1);
+    }
+    while(fread(reg, sizeof(Registro), 1, fp)==1){
+        exibeRegistro(reg);
+    }
+    getchar();
+    fclose(fp);
 }
