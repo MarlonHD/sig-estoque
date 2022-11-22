@@ -170,11 +170,22 @@ int isNumValid(char *num){
 
 int isNomeValid(char *nome){
     int tam = strlen(nome);
+    int cont = 0;
+
+    if(strcmp(nome,"\n")==0){
+        return 0;
+    }
 
     for(int i = 0; i<tam; i++){
         if(isDigit(nome[i])){
             return 0;
         }
+        if(isLetra(nome[i])){
+            cont++;
+        }
+    }
+    if(!cont){
+        return 0;
     }
     return 1;
 }
