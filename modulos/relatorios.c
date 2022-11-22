@@ -28,13 +28,11 @@ void moduloRelatorios(void) {
 void estoqueCompleto(void){
     system("clear||cls");
     printf("\n");
-    listarEstoque();
-}
-
-void listarEstoque(void){
+    
     FILE* fp;
     Estoque* est;
     est = (Estoque*)malloc(sizeof(Estoque));
+    int cont = 0;
 
     fp = fopen("./arquivos/estoque.dat", "ab");
     fclose(fp);
@@ -42,6 +40,11 @@ void listarEstoque(void){
     fp = fopen("./arquivos/estoque.dat", "rb");
     while(fread(est, sizeof(Estoque), 1, fp)==1){
         exibeEstoque(est);
+        cont++;
+    }
+    if(!cont){
+        printf("\n\tNão há elementos a serem exibidos!");
+        printf("\n\tPressione qualquer tecla para continuar...");
     }
     getchar();
     fclose(fp);
@@ -54,6 +57,7 @@ void histRegistros(void){
     FILE* fp;
     Registro* reg;
     reg = (Registro*)malloc(sizeof(Registro));
+    int cont = 0;
 
     fp = fopen("./arquivos/registros.dat", "ab");
     fclose(fp);
@@ -66,6 +70,11 @@ void histRegistros(void){
     }
     while(fread(reg, sizeof(Registro), 1, fp)==1){
         exibeRegistro(reg);
+        cont++;
+    }
+    if(!cont){
+        printf("\n\tNão há elementos a serem exibidos!");
+        printf("\n\tPressione qualquer tecla para continuar...");
     }
     getchar();
     fclose(fp);
