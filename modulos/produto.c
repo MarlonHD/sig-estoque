@@ -247,6 +247,7 @@ void atualizaProduto(char *codigo){
         scanf("%c", &opcao);
         if(opcao != '0'){    
             prodNovo = preencheProduto('e');
+            strcpy(prodNovo->codProduto, prod->codProduto);
             fseek(fp, (-1)*sizeof(Produto), SEEK_CUR);
             fwrite(prodNovo, sizeof(Produto), 1, fp);
             printf("\n\tProduto alterado com sucesso!\n\t");
