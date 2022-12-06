@@ -123,6 +123,12 @@ int main(void){
                     case '4':
                         histRegistros();
                         break;
+                    case '5':
+                        prod_filtro(1);
+                        break;
+                    case '6':
+                        prod_filtro(2);
+                        break; 
                     case '7':
                         forneAlfab();
                         break;

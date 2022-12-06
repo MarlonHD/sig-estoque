@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "relatorios.h"
 #include "estoque.h"
 #include "produto.h"
 #include "fornecedor.h"
+#include "validacoes.h"
 
 void moduloRelatorios(void) {
     system("clear||cls");
@@ -146,6 +148,71 @@ void fornecedoresCad(void){
     free(forn);
 }
 
+char* getFiltro(int op){
+    char* filtro;
+    filtro = (char*)malloc(sizeof(char)*30);
+    if(op == 1){
+        do{
+        printf("\tDigite o CNPJ do fornecedor (apenas números): \n\t");
+        fgets(filtro, 30, stdin);
+        limpaTexto(filtro);
+    }while(!isFornecedorCad(filtro));
+    }else if(op == 2){
+        do{
+            printf("\tDigite a categoria do produto: \n\t");
+            fgets(filtro, 30, stdin);
+        }while(!isNomeValid(filtro));
+    }else{
+        return NULL;
+    }
+    return filtro;
+}
+
+void prod_filtro(int op){
+    FILE* fp;
+    Produto* prod;
+    prod = (Produto*)malloc(sizeof(Produto));
+
+    fp = fopen("./arquivos/produtos.dat", "ab");
+    fclose(fp);
+    fp = fopen("./arquivos/produtos.dat", "rb");
+    if(fp == NULL){
+        printf("\n\tFalha na abertura do arquivo!");
+        getchar();
+        exit(1);
+    }
+
+    char* filtro = getFiltro(op);
+    if(op == 1){
+        while((fread(prod, sizeof(Produto), 1, fp)==1)){
+            if(strcmp(prod->cnpjFornecedor,filtro)==0){
+                exibeProduto(prod);
+                if(isOnEstoque(prod->codProduto)){
+                    printf("\tQuantidade: %d\n", quantidade(prod->codProduto));
+                }else{
+                    printf("\tQuantidade: 0\n");
+                }
+                
+            }
+        }
+    }else if(op == 2){
+        while (fread(prod, sizeof(Produto),1, fp)==1){
+            if(strcmp(prod->categoria, filtro)==0){
+                exibeProduto(prod);
+                if(isOnEstoque(prod->codProduto)){
+                    printf("\tQuantidade: %d\n", quantidade(prod->codProduto));
+                }else{
+                    printf("\tQuantidade: 0\n");
+                }
+            }
+        }
+    }
+
+    getchar();
+    fclose(fp);
+    free(filtro);
+}
+
 void forneAlfab(void){
     int cont = 0;
   Fornecedor* forn;
@@ -157,21 +224,23 @@ void forneAlfab(void){
       if(forn->nome[0] == 65+i || forn->nome[0] == 97+i){
         cont++;
         printf("\n"
-        "//////////////////////////////////////////////////////////////////////////////\n"
-        "///  FORNECEDOR %i                                                         ///", cont);
+        "////////////////////////////////////////////////////////////////////////////////\n"
+        "///  FORNECEDOR %6i                                                       ///\n", cont);
         exibeFornecedor(forn);
         printf("\n");
       }
-    }}
+    }
+    fclose(fp);
+    }
     if(cont == 0){
     printf("\n"
-      "//////////////////////////////////////////////////////////////////////////////\n"
-      "///                                                                        ///\n"
-      "///                   Nenhum Fornecedor Cadastrado                         ///\n"
-      "///                                                                        ///\n"
-      "//////////////////////////////////////////////////////////////////////////////\n");
+      "////////////////////////////////////////////////////////////////////////////////\n"
+      "///                                                                          ///\n"
+      "///                       Nenhum Fornecedor Cadastrado                       ///\n"
+      "///                                                                          ///\n"
+      "////////////////////////////////////////////////////////////////////////////////\n");
   }
-    fclose(fp);
+    
   free(forn);
   getchar();
   system("clear || cls");
@@ -188,21 +257,22 @@ void prodAlfab(void){
       if(prod->nomeProduto[0] == 65+i || prod->nomeProduto[0] == 97+i){
         cont++;
         printf("\n"
-        "//////////////////////////////////////////////////////////////////////////////\n"
-        "///  PRODUTO %i                                                         ///", cont);
+        "////////////////////////////////////////////////////////////////////////////////\n"
+        "///  PRODUTO %6i                                                          ///\n", cont);
         exibeProduto(prod);
         printf("\n");
       }
-    }}
+    }
+    fclose(fp);
+    }
     if(cont == 0){
     printf("\n"
-      "//////////////////////////////////////////////////////////////////////////////\n"
-      "///                                                                        ///\n"
-      "///                   Nenhum Produto Cadastrado                            ///\n"
-      "///                                                                        ///\n"
-      "//////////////////////////////////////////////////////////////////////////////\n");
+      "////////////////////////////////////////////////////////////////////////////////\n"
+      "///                                                                          ///\n"
+      "///                        Nenhum Produto Cadastrado                         ///\n"
+      "///                                                                          ///\n"
+      "////////////////////////////////////////////////////////////////////////////////\n");
   }
-    fclose(fp);
   free(prod);
   getchar();
   system("clear || cls");
