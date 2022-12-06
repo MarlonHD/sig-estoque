@@ -19,6 +19,8 @@ void moduloRelatorios(void) {
     printf("###               4. Histórico de Registros                                  ###\n");
     printf("###               5. Produtos por Fornecedor                                 ###\n");
     printf("###               6. Produtos por Categoria                                  ###\n");
+    printf("###               7. Fornecedores em ordem alfabética                        ###\n");
+    printf("###               8. Produtos em ordem alfabética                            ###\n");
     printf("###               0. Voltar                                                  ###\n");
     printf("###                                                                          ###\n");
     printf("################################################################################\n");
@@ -142,4 +144,66 @@ void fornecedoresCad(void){
     getchar();
     fclose(fp);
     free(forn);
+}
+
+void forneAlfab(void){
+    int cont = 0;
+  Fornecedor* forn;
+  FILE* fp;
+  forn = (Fornecedor*) malloc(sizeof(Fornecedor));
+  for(int i = 0; i <= 25; i++){
+    fp = fopen("./arquivos/fornecedores.dat", "r+b");
+    while((fread(forn, sizeof(Fornecedor), 1, fp))){
+      if(forn->nome[0] == 65+i || forn->nome[0] == 97+i){
+        cont++;
+        printf("\n"
+        "//////////////////////////////////////////////////////////////////////////////\n"
+        "///  FORNECEDOR %i                                                         ///", cont);
+        exibeFornecedor(forn);
+        printf("\n");
+      }
+    }}
+    if(cont == 0){
+    printf("\n"
+      "//////////////////////////////////////////////////////////////////////////////\n"
+      "///                                                                        ///\n"
+      "///                   Nenhum Fornecedor Cadastrado                         ///\n"
+      "///                                                                        ///\n"
+      "//////////////////////////////////////////////////////////////////////////////\n");
+  }
+    fclose(fp);
+  free(forn);
+  getchar();
+  system("clear || cls");
+}
+
+void prodAlfab(void){
+    int cont = 0;
+  Produto* prod;
+  FILE* fp;
+  prod = (Produto*) malloc(sizeof(Produto));
+  for(int i = 0; i <= 25; i++){
+    fp = fopen("./arquivos/produtos.dat", "r+b");
+    while((fread(prod, sizeof(Produto), 1, fp))){
+      if(prod->nomeProduto[0] == 65+i || prod->nomeProduto[0] == 97+i){
+        cont++;
+        printf("\n"
+        "//////////////////////////////////////////////////////////////////////////////\n"
+        "///  PRODUTO %i                                                         ///", cont);
+        exibeProduto(prod);
+        printf("\n");
+      }
+    }}
+    if(cont == 0){
+    printf("\n"
+      "//////////////////////////////////////////////////////////////////////////////\n"
+      "///                                                                        ///\n"
+      "///                   Nenhum Produto Cadastrado                            ///\n"
+      "///                                                                        ///\n"
+      "//////////////////////////////////////////////////////////////////////////////\n");
+  }
+    fclose(fp);
+  free(prod);
+  getchar();
+  system("clear || cls");
 }
