@@ -234,7 +234,20 @@ void atualizaFornecedor(char *cnpj){
         printf("\t0.....Cancelar edição\n\t");
         scanf("%c", &opcao);
         if(opcao != '0'){    
-            fornNovo = preencheFornecedor();
+            do{
+                printf("\tInsira o nome do Fornecedor: \n\t");
+                fgets(fornNovo->nome, 30, stdin);
+            }while(!isNomeValid(fornNovo->nome));
+            do{
+                printf("\tE-mail: \n\t");
+                fgets(fornNovo->email, 50, stdin);
+            }while(!isEmailValid(fornNovo->email));
+
+            printf("\tInsira o número de telefone: \n\t");
+            fgets(fornNovo->telefone, 20, stdin);
+            fornNovo->status = 'c';
+            //
+            strcpy(fornNovo->cnpj, fulano->cnpj);
             fseek(fp, (-1)*sizeof(Fornecedor), SEEK_CUR);
             fwrite(fornNovo, sizeof(Fornecedor), 1, fp);
             printf("\n\tFornecedor alterado com sucesso!\n\t");
