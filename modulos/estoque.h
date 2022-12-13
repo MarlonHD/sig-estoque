@@ -35,3 +35,5 @@ void exibeRegistro(Registro*);
 //Funções módulo estoque
 void alterarEstoque(char);
 void procurarEstoque(void);
+
+int quantMax(void);

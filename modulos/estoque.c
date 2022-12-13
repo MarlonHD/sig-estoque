@@ -289,3 +289,27 @@ void procurarEstoque(void){
     getchar();
 }
 
+int quantMax(void){
+    int max = -1;
+    
+    FILE* fp;
+    Estoque* est;
+    est = (Estoque*)malloc(sizeof(Estoque));
+     // corretor de bug    
+    fp = fopen("./arquivos/estoque.dat", "ab");
+    fclose(fp);
+
+    fp = fopen("./arquivos/estoque.dat","rb");
+    if(fp == NULL){
+        printf("404! \nErro na abertura do arquivo!");
+        exit(1);
+    }
+    while(fread(est, sizeof(Estoque), 1, fp)==1){
+        if(est->quantidade >= max){
+            max = est->quantidade;
+        }
+    }
+    fclose(fp);
+    free(est);
+    return max;
+}
