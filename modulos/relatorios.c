@@ -23,6 +23,7 @@ void moduloRelatorios(void) {
     printf("###               6. Produtos por Categoria                                  ###\n");
     printf("###               7. Fornecedores em ordem alfabética                        ###\n");
     printf("###               8. Produtos em ordem alfabética                            ###\n");
+    printf("###               9. Estoque completo dinamico                               ###\n");
     printf("###               0. Voltar                                                  ###\n");
     printf("###                                                                          ###\n");
     printf("################################################################################\n");
@@ -276,4 +277,75 @@ void prodAlfab(void){
   free(prod);
   getchar();
   system("clear || cls");
+}
+
+
+void estoqueCompletoDinamico(){
+    FILE* ests;
+    Estoque* est;
+    est = (Estoque*)malloc(sizeof(Estoque));
+    ests = fopen("./arquivos/estoque.dat", "ab");
+    fclose(ests);
+    ests = fopen("./arquivos/estoque.dat", "rb");
+    
+    EstoqueDin* estDin;
+    int cont = 0;
+    while((fread(est, sizeof(Estoque), 1, ests)==1)){
+        if(cont == 0){
+            estDin = preencheEstDin(NULL);
+        }else{
+            estDin = preencheEstDin(estDin->prox);
+        }
+        cont++;
+    }
+    
+
+    fclose(ests);
+}
+
+
+EstoqueDin* preencheEstDin(EstoqueDin* lista){
+    EstoqueDin* estDin;
+    estDin = (EstoqueDin*)malloc(sizeof(EstoqueDin));
+
+    if(lista == NULL){
+        estDin->prox = NULL;
+    }
+    
+    FILE* prods;
+    FILE* ests;
+
+    Produto* prod;
+    prod = (Produto*)malloc(sizeof(Produto));
+    Estoque* est;
+    est = (Estoque*)malloc(sizeof(Estoque));
+
+    prods = fopen("./arquivos/produtos.dat", "ab");
+    fclose(prods);
+    ests = fopen("./arquivos/estoque.dat", "ab");
+    fclose(ests);
+    ests = fopen("./arquivos/estoque.dat", "rb");
+    prods = fopen("./arquivos/produtos.dat", "rb");
+
+    while((fread(est, sizeof(Estoque), 1, ests)==1)){
+        while(fread(prod, sizeof(Estoque), 1, prods)==1){
+            if(strcmp(est->codProduto, prod->codProduto)==0){
+                strcpy(estDin->categoria, prod->categoria);
+                strcpy(estDin->cnpjFornecedor, prod->cnpjFornecedor);
+                strcpy(estDin->codProduto, prod->codProduto);
+                strcpy(estDin->nomeProduto, prod->nomeProduto);
+                estDin->quantidade = quantidade(est->codProduto);
+                estDin->nomeFornecedor = getNomeFornByCNPJ(prod->cnpjFornecedor);
+                estDin->prox = NULL;
+            }
+        }
+    }
+
+    
+    fclose(prods);
+    fclose(ests);
+    free(est);
+    free(prod);
+
+    return estDin;
 }

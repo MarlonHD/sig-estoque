@@ -9,3 +9,19 @@ void prod_filtro(int);
 
 void forneAlfab(void);
 void prodAlfab(void);
+
+void estoqueCompletoDinamico(void);
+
+typedef struct estoqueDinamico EstoqueDin;
+
+struct estoqueDinamico{
+    char *codProduto;
+    char *nomeProduto;
+    char *categoria;
+    char *cnpjFornecedor;
+    char *nomeFornecedor;
+    int quantidade;
+    EstoqueDin *prox;
+};
+
+EstoqueDin* preencheEstDin(EstoqueDin*);
