@@ -134,11 +134,14 @@ int main(void){
                         break;
                     case '8':
                         prodAlfab();
-                        break;        
+                        break;
+                    //case '9':
+                    //    estoqueCompletoDinamico();
+                    //    break;        
                     case '0':
                         break;
                     default:
-                        if(op1 > '1' && op1 < '8' && op1 != '4'){
+                        if(op1 >= '1' && op1 <= '9'){
                             printf("\n\n\t\t\tEM DESENVOLVIMENTO!\n\n");
                             printf("\t\tPressione <ENTER> para continuar...\n");
                             getchar();
