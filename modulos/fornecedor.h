@@ -28,3 +28,5 @@ void cadastrarFornecedor(void);
 void editarFornecedor(void);
 void procurarFornecedor(void);
 void deletarFornecedor(void);
+
+char* getNomeFornByCNPJ(char*);

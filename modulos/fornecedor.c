@@ -330,3 +330,32 @@ void deletarFornecedor(void) {
     excluirFornecedor(cnpj);
     getchar();
 }
+
+
+char* getNomeFornByCNPJ(char* cnpj){
+    FILE* fp;
+    Fornecedor* forn;
+    forn = (Fornecedor*)malloc(sizeof(Fornecedor));
+
+    // corretor de bug    
+    fp = fopen("./arquivos/fornecedores.dat", "ab");
+    fclose(fp);
+
+    fp = fopen("./arquivos/fornecedores.dat","rb");
+    if(fp == NULL){
+        printf("404! \nErro na abertura do arquivo!");
+        exit(1);
+    }
+    while(fread(forn, sizeof(Fornecedor), 1, fp)){
+        if((strncmp(forn->cnpj, cnpj, strlen(cnpj)-1) == 0)){
+            char* nome;
+            nome = (char*)malloc(sizeof(char)*(strlen(forn->nome)));
+            strcpy(nome, forn->nome);
+            fclose(fp);
+            free(forn);
+            return nome;
+        }
+    }
+
+    return NULL;
+}
