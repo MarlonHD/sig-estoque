@@ -280,7 +280,48 @@ void prodAlfab(void){
 }
 
 
-void estoqueCompletoDinamico(){
+EstDinKey* getEstDinKey(void){
+    FILE* fp;
+    Estoque* est;
+    est = (Estoque*)malloc(sizeof(Estoque));
+    fp = fopen("./arquivos/estoque.dat", "ab");
+    fclose(fp);
+    fp = fopen("./arquivos/estoque.dat", "rb");
+    EstDinKey *key;
+    EstDinKey *lista;
+
+    lista = NULL;
+    int tam;
+
+    while(fread(est, sizeof(Estoque), 1, fp)==1){
+        key = (EstDinKey*)malloc(sizeof(EstDinKey));
+        tam = strlen(est->codProduto)+1;
+        key->codigo = (char*)malloc(sizeof(char)*tam);
+        strcpy(key->codigo, est->codProduto);
+        key->quantidade = quantidade(est->codProduto);
+        if(lista == NULL){
+            lista = key;
+            key->prox = NULL;
+        }else if(key->quantidade < lista->quantidade){
+            key->prox = lista;
+            lista = key;
+        }else{
+            EstDinKey *anter = lista;
+            EstDinKey *atual = lista->prox;
+            while((atual != NULL) && (atual->quantidade < key->quantidade)){
+                anter = atual;
+                atual = atual->prox;
+            }
+            anter->prox = key;
+            key->prox = atual;
+        }
+
+    }
+    fclose(fp);
+    return lista;
+}
+/*
+void estoqueCompletoDinamico(void){
     FILE* ests;
     Estoque* est;
     est = (Estoque*)malloc(sizeof(Estoque));
@@ -301,17 +342,17 @@ void estoqueCompletoDinamico(){
     
 
     fclose(ests);
-}
+}*/
 
-
-EstoqueDin* preencheEstDin(EstoqueDin* lista){
+/*
+EstoqueDin* preencheEstDin(EstDinKey* lista){
     EstoqueDin* estDin;
     estDin = (EstoqueDin*)malloc(sizeof(EstoqueDin));
 
     if(lista == NULL){
         estDin->prox = NULL;
     }
-    
+
     FILE* prods;
     FILE* ests;
 
@@ -326,6 +367,7 @@ EstoqueDin* preencheEstDin(EstoqueDin* lista){
     fclose(ests);
     ests = fopen("./arquivos/estoque.dat", "rb");
     prods = fopen("./arquivos/produtos.dat", "rb");
+
 
     while((fread(est, sizeof(Estoque), 1, ests)==1)){
         while(fread(prod, sizeof(Estoque), 1, prods)==1){
@@ -348,7 +390,7 @@ EstoqueDin* preencheEstDin(EstoqueDin* lista){
     free(prod);
 
     return estDin;
-}
+}*/
 
 /*void rela_ordem_alfa_ass(void){ //Adaptada de @FlaviusGorgonio
   FILE *fp;

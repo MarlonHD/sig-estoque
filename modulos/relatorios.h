@@ -12,6 +12,14 @@ void prodAlfab(void);
 
 void estoqueCompletoDinamico(void);
 
+typedef struct estoqueDinKey EstDinKey;
+
+struct estoqueDinKey{
+    int quantidade;
+    char *codigo;
+    EstDinKey *prox;
+};
+
 typedef struct estoqueDinamico EstoqueDin;
 
 struct estoqueDinamico{
@@ -24,7 +32,11 @@ struct estoqueDinamico{
     EstoqueDin *prox;
 };
 
-EstoqueDin* preencheEstDin(EstoqueDin*);
+EstDinKey* getEstDinKey(void);
+
+EstoqueDin* preencheEstDin(EstDinKey*);
+void exibeEstDin(EstoqueDin*);
+void limpaMemoriaEstDin(EstoqueDin*);
 
 void rela_ordem_alfa_ass(void);
 
