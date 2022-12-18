@@ -402,6 +402,21 @@ EstoqueDin* preencheEstDin(EstDinKey* keys){
     return lista;
 }
 
+void exibeEstDin(EstoqueDin* lista){
+    while(lista != NULL){
+        printf("################################################################################\n###\n");
+        printf("###\tCódigo do Produto:.......%s", lista->codProduto);
+        printf("###\tNome do Produto:.........%s", lista->nomeProduto);
+        printf("###\tQuantidade:..............%d\n", lista->quantidade);
+        printf("###\tCategoria:...............%s",lista->categoria);
+        printf("###\tNome do Fornecedor:......%s",lista->nomeFornecedor);
+        printf("###\tCNPJ do Fornecedor:......%s",lista->cnpjFornecedor);
+        printf("###\n");
+        lista = lista->prox;
+    }
+    getchar();
+}
+
 /*void rela_ordem_alfa_ass(void){ //Adaptada de @FlaviusGorgonio
   FILE *fp;
   Fornecedor *novaAss;
