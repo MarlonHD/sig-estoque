@@ -25,7 +25,7 @@ int main(void){
     const char SAIR = '0';
     char op;
     char op1 = '0';
-
+    NoFornecedor* lista;
     do{
         (op1 == '0') ? telaPrincipal() : 1;
         op = (op1 == '0') ? escolherOpcao() : op;
@@ -135,9 +135,10 @@ int main(void){
                     case '8':
                         prodAlfab();
                         break;
-                    //case '9':
-                    //    estoqueCompletoDinamico();
-                    //    break;        
+                    case '9':
+                    lista = listaOrdenadaForne();
+                    exibeLista(lista);
+                    break;        
                     case '0':
                         break;
                     default:

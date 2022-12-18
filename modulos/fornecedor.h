@@ -6,6 +6,18 @@ struct fornecedor{
     char cnpj[20];
     char telefone[20];
     char status;
+
+};
+
+typedef struct noFornecedor NoFornecedor;
+
+struct noFornecedor{
+    char nome[30];
+    char email[50];
+    char cnpj[20];
+    char telefone[20];
+    char status;
+    NoFornecedor *prox;
 };
 
 void moduloFornecedor(void);

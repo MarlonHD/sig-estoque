@@ -349,3 +349,107 @@ EstoqueDin* preencheEstDin(EstoqueDin* lista){
 
     return estDin;
 }
+
+/*void rela_ordem_alfa_ass(void){ //Adaptada de @FlaviusGorgonio
+  FILE *fp;
+  Fornecedor *novaAss;
+  Fornecedor* lista;
+  fp = fopen("arquivos/fornecedores.dat","r+b");
+  if(fp == NULL){
+    printf("Erro na abertura do arquivo!\n");
+    exit(1);
+  }
+  lista = NULL;
+  while(!feof(fp)){
+    novaAss = (Fornecedor*) malloc(sizeof(Fornecedor));
+    if(fread(novaAss, sizeof(Fornecedor), 1, fp)){
+      if(novaAss->status == 'c'){
+        if(lista == NULL){
+          lista = novaAss;
+          novaAss->prox = NULL;
+        }else if(strcmp(novaAss->nome, lista->nome) < 0){
+          novaAss->prox = lista;
+          lista = novaAss;
+        }else{
+          Fornecedor* anter = lista;
+          Fornecedor* atual = lista->prox;
+          while((atual != NULL) && strcmp(atual->nome,novaAss->nome) < 0){
+            anter = atual;
+            atual = atual->prox;
+          }
+          anter->prox = novaAss;
+          novaAss->prox = atual;
+        }
+      }
+    }
+  }
+  fclose(fp);
+
+  //limpa_exibe_lista_ass(novaAss,lista,'a'); resolver o problema dessa função linha 701 do gordin
+
+  printf(">>> APERTE ENTER PARA CONTINUAR >>> ");
+  getchar();
+  system("clear || cls");
+}*/
+
+NoFornecedor* listaOrdenadaForne(void) {
+  FILE* fp;
+  Fornecedor* fornecedor;
+  NoFornecedor* noFornecedor;
+  NoFornecedor* lista;
+
+  lista = NULL;
+  fp = fopen("fornecedores.dat", "rb");
+  if (fp == NULL) {
+    printf("Ops! Ocorreu um erro na abertura do arquivo!\n");
+    printf("Não é possível continuar o programa...\n");
+    exit(1);
+  }
+
+  fornecedor = (Fornecedor*) malloc(sizeof(Fornecedor));
+  while(fread(fornecedor, sizeof(Fornecedor), 1, fp)) {
+    if (fornecedor->status == 'c') {
+      noFornecedor = (NoFornecedor*) malloc(sizeof(NoFornecedor));
+      strcpy(noFornecedor->nome, fornecedor->nome);
+      strcpy(noFornecedor->cnpj, fornecedor->cnpj);
+      strcpy(noFornecedor->email, fornecedor->email);
+      strcpy(noFornecedor->telefone, fornecedor->telefone);
+      noFornecedor->status = fornecedor->status;
+
+      if (lista == NULL) {
+        lista = noFornecedor;
+        noFornecedor->prox = NULL;
+      } else if (strcmp(noFornecedor->nome,lista->nome) < 0) {
+        noFornecedor->prox = lista;
+        lista = noFornecedor;
+      } else {
+        NoFornecedor* anter = lista;
+        NoFornecedor* atual = lista->prox;
+        while ((atual != NULL) && strcmp(atual->nome,noFornecedor->nome) < 0) {
+          anter = atual;
+          atual = atual->prox;
+        }
+        anter->prox = noFornecedor;
+        noFornecedor->prox = atual;
+      }
+    }
+  }
+  fclose(fp);
+  free(fornecedor);
+  return lista;
+}
+
+
+void exibeLista(NoFornecedor* lista) {
+  printf("\n\n");
+
+  while (lista != NULL) {
+    printf("Nome: %s\n", lista->nome);
+    printf("CNPJ: %s\n", lista->cnpj);
+    printf("E-mail: %s\n", lista->email);
+    printf("Telefone: %s\n", lista->telefone);
+    printf("Status: %c\n", lista->status);
+    printf("\n");
+    lista = lista->prox;
+  }
+}
