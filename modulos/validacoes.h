@@ -10,3 +10,4 @@ int isNumValid(char*); // Verifica se a cadeia de char é totalmente composta po
 int isCharValid(char*, char[]); // Verifica se a sequencia de char possui algum char fora do filtro
 int isEmailValid(char*); // Verifica se o email é válido
 void limpaTexto(char*); // Remove caracteres que não sejam números nem letras 
+int validaTel(char*); //valida telefone  

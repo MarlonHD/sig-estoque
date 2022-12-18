@@ -114,8 +114,10 @@ Fornecedor* preencheFornecedor(void){
             fgets(fulano->email, 50, stdin);
         }while(!isEmailValid(fulano->email));
 
+        do{
         printf("\tInsira o número de telefone: \n\t");
         fgets(fulano->telefone, 20, stdin);
+        }while(!validaTel(fulano ->telefone));
         fulano->status = 'c';
 
         return fulano;

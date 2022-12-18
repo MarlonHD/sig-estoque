@@ -28,5 +28,5 @@ EstoqueDin* preencheEstDin(EstoqueDin*);
 
 void rela_ordem_alfa_ass(void);
 
-NoFornecedor* listaOrdenadaForne(void);
-void exibeLista(NoFornecedor*);
+//NoFornecedor* listaOrdenadaForne(void);
+//void exibeLista(NoFornecedor*);

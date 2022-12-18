@@ -136,8 +136,8 @@ int main(void){
                         prodAlfab();
                         break;
                     case '9':
-                    lista = listaOrdenadaForne();
-                    exibeLista(lista);
+                    //lista = listaOrdenadaForne();
+                    //exibeLista(lista);
                     break;        
                     case '0':
                         break;

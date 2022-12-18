@@ -392,7 +392,7 @@ EstoqueDin* preencheEstDin(EstoqueDin* lista){
   system("clear || cls");
 }*/
 
-NoFornecedor* listaOrdenadaForne(void) {
+/*NoFornecedor* listaOrdenadaForne(void) {
   FILE* fp;
   Fornecedor* fornecedor;
   NoFornecedor* noFornecedor;
@@ -437,10 +437,10 @@ NoFornecedor* listaOrdenadaForne(void) {
   fclose(fp);
   free(fornecedor);
   return lista;
-}
+}*/
 
 
-void exibeLista(NoFornecedor* lista) {
+/*void exibeLista(NoFornecedor* lista) {
   printf("\n\n");
 
   while (lista != NULL) {
@@ -452,4 +452,4 @@ void exibeLista(NoFornecedor* lista) {
     printf("\n");
     lista = lista->prox;
   }
-}
+}*/
