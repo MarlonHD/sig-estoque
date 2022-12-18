@@ -344,53 +344,63 @@ void estoqueCompletoDinamico(void){
     fclose(ests);
 }*/
 
-/*
-EstoqueDin* preencheEstDin(EstDinKey* lista){
+
+EstoqueDin* preencheEstDin(EstDinKey* keys){
     EstoqueDin* estDin;
-    estDin = (EstoqueDin*)malloc(sizeof(EstoqueDin));
-
-    if(lista == NULL){
-        estDin->prox = NULL;
-    }
-
+    EstoqueDin* lista;
     FILE* prods;
-    FILE* ests;
 
     Produto* prod;
     prod = (Produto*)malloc(sizeof(Produto));
-    Estoque* est;
-    est = (Estoque*)malloc(sizeof(Estoque));
 
     prods = fopen("./arquivos/produtos.dat", "ab");
     fclose(prods);
-    ests = fopen("./arquivos/estoque.dat", "ab");
-    fclose(ests);
-    ests = fopen("./arquivos/estoque.dat", "rb");
-    prods = fopen("./arquivos/produtos.dat", "rb");
+    
 
+    int tam;
+    lista = NULL;
 
-    while((fread(est, sizeof(Estoque), 1, ests)==1)){
-        while(fread(prod, sizeof(Estoque), 1, prods)==1){
-            if(strcmp(est->codProduto, prod->codProduto)==0){
+    while(keys != NULL){
+        estDin = (EstoqueDin*)malloc(sizeof(EstoqueDin));
+        prods = fopen("./arquivos/produtos.dat", "rb");
+        while(fread(prod, sizeof(Produto), 1, prods)==1){
+            if(strcmp(keys->codigo,prod->codProduto)==0){
+                tam = strlen(prod->categoria)+1;
+                estDin->categoria = (char*)malloc(sizeof(char)*tam);
                 strcpy(estDin->categoria, prod->categoria);
+
+                tam = strlen(prod->cnpjFornecedor)+1;
+                estDin->cnpjFornecedor = (char*)malloc(sizeof(char)*tam);
                 strcpy(estDin->cnpjFornecedor, prod->cnpjFornecedor);
+
+                tam = strlen(prod->codProduto)+1;
+                estDin->codProduto = (char*)malloc(sizeof(char)*tam);
                 strcpy(estDin->codProduto, prod->codProduto);
+
+                tam = strlen(prod->nomeProduto)+1;
+                estDin->nomeProduto = (char*)malloc(sizeof(char)*tam);
                 strcpy(estDin->nomeProduto, prod->nomeProduto);
-                estDin->quantidade = quantidade(est->codProduto);
+
                 estDin->nomeFornecedor = getNomeFornByCNPJ(prod->cnpjFornecedor);
-                estDin->prox = NULL;
+                estDin->quantidade = quantidade(prod->codProduto);
+                ////////////
+                estDin->prox = lista;
+                lista = estDin;
+
             }
         }
+        fclose(prods);
+        keys = keys->prox;
     }
-
-    
-    fclose(prods);
-    fclose(ests);
-    free(est);
     free(prod);
 
-    return estDin;
-}*/
+    //while(estDin != NULL){
+    //    printf("Prod->quant: %d\n", estDin->quantidade);
+    //    estDin = estDin->prox;
+    //}
+    //getchar();
+    return lista;
+}
 
 /*void rela_ordem_alfa_ass(void){ //Adaptada de @FlaviusGorgonio
   FILE *fp;
