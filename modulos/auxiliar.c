@@ -52,3 +52,40 @@ char escolherOpcao(void){
     }
     return 'm';
 }
+
+void telaLoad(void){
+    char* pretoB = "\033[40m";
+    char* laranjaB = "\033[43m";
+    char* cinza = "\033[37m";
+    char* cinzaB = "\033[47m";
+    char* clean = "\033[0m";
+    char* pisca = "\033[5m";
+    system("clear || cls");
+    printf("\n\n\n\n");
+    printf("\t%s#####  ###   ####       ##### ##### #####  ###   ###  #   # #####%s\n",cinza,clean);
+    printf("\t%s#       #   #           #     #       #   #   # #   # #   # #    %s\n",cinza,clean);
+    printf("\t%s#####   #   #  ##  ###  ###   #####   #   #   # #   # #   # ###  %s\n",cinza,clean);
+    printf("\t%s    #   #   #   #       #         #   #   #   # #  #  #   # #    %s\n",cinza,clean);
+    printf("\t%s#####  ###  ####        ##### #####   #    ###   ## #  ###  #####%s\n",cinza,clean);
+    printf("\n\t\t\t    %s                          %s",pretoB,clean);
+    printf("\n\t\t\t    %s %s                        %s %s",pretoB,laranjaB,pretoB,clean);
+    printf("\n\t\t\t    %s %s                        %s %s",pretoB,laranjaB,pretoB,clean);
+    printf("\n\t\t\t    %s                          %s",pretoB,clean);
+    printf("\n\t\t\t     %s %s         %s    %s         %s %s",pretoB,laranjaB,cinzaB,laranjaB,pretoB,clean);
+    printf("\n\t\t\t     %s %s         %s    %s         %s %s",pretoB,laranjaB,cinzaB,laranjaB,pretoB,clean);
+    printf("\n\t\t\t     %s %s                      %s %s",pretoB,laranjaB,pretoB,clean);
+    printf("\n\t\t\t     %s %s                      %s %s",pretoB,laranjaB,pretoB,clean);
+    printf("\n\t\t\t     %s %s                      %s %s",pretoB,laranjaB,pretoB,clean);
+    printf("\n\t\t\t     %s %s                      %s %s",pretoB,laranjaB,pretoB,clean);
+    printf("\n\t\t\t     %s %s                      %s %s",pretoB,laranjaB,pretoB,clean);
+    printf("\n\t\t\t     %s %s                      %s %s",pretoB,laranjaB,pretoB,clean);
+    printf("\n\t\t\t     %s                        %s",pretoB,clean);
+    printf("\n\n\t\t\t %sPressione <ENTER> para continuar%s\n\t\t\t\t\t", pisca,clean);
+
+}
+
+// #####  ###   ####       ##### ##### #####  ###   ###  #   # ##### 
+// #       #   #           #     #       #   #   # #   # #   # # 
+// #####   #   #  ##  ###  ###   #####   #   #   # #   # #   # ###
+//     #   #   #   #       #         #   #   #   # #  #  #   # #
+// #####  ###  ####        ##### #####   #    ###   ## #  ###  #####

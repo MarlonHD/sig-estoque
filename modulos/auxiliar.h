@@ -4,3 +4,4 @@ void telaPrincipal(void);
 void tela_sobre(void);
 
 char escolherOpcao(void);
+void telaLoad(void);
