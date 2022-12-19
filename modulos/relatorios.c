@@ -320,29 +320,13 @@ EstDinKey* getEstDinKey(void){
     fclose(fp);
     return lista;
 }
-/*
-void estoqueCompletoDinamico(void){
-    FILE* ests;
-    Estoque* est;
-    est = (Estoque*)malloc(sizeof(Estoque));
-    ests = fopen("./arquivos/estoque.dat", "ab");
-    fclose(ests);
-    ests = fopen("./arquivos/estoque.dat", "rb");
-    
-    EstoqueDin* estDin;
-    int cont = 0;
-    while((fread(est, sizeof(Estoque), 1, ests)==1)){
-        if(cont == 0){
-            estDin = preencheEstDin(NULL);
-        }else{
-            estDin = preencheEstDin(estDin->prox);
-        }
-        cont++;
-    }
-    
 
-    fclose(ests);
-}*/
+void estoqueByQuant(void){
+    EstDinKey *key = getEstDinKey();
+    EstoqueDin *listaEst = preencheEstDin(key);
+    exibeEstDin(listaEst);
+    limpaMemoriaEstDin(listaEst);
+}
 
 
 EstoqueDin* preencheEstDin(EstDinKey* keys){
@@ -414,6 +398,7 @@ void exibeEstDin(EstoqueDin* lista){
         printf("###\n");
         lista = lista->prox;
     }
+    printf("################################################################################\n\t");
     getchar();
 }
 

@@ -10,7 +10,7 @@ void prod_filtro(int);
 void forneAlfab(void);
 void prodAlfab(void);
 
-void estoqueCompletoDinamico(void);
+void estoqueByQuant(void);
 
 typedef struct estoqueDinKey EstDinKey;
 
