@@ -417,6 +417,20 @@ void exibeEstDin(EstoqueDin* lista){
     getchar();
 }
 
+void limpaMemoriaEstDin(EstoqueDin* lista){
+    EstoqueDin *aux;
+    while(lista != NULL){
+        aux = lista;
+        free(aux->categoria);
+        free(aux->cnpjFornecedor);
+        free(aux->codProduto);
+        free(aux->nomeFornecedor);
+        free(aux->nomeProduto);
+        free(aux);
+        lista = lista->prox;
+    }
+}
+
 /*void rela_ordem_alfa_ass(void){ //Adaptada de @FlaviusGorgonio
   FILE *fp;
   Fornecedor *novaAss;
