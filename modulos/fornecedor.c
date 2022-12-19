@@ -139,11 +139,13 @@ void gravaFornecedor(Fornecedor *fornecedor){
 }
 
 void exibeFornecedor(Fornecedor *fornecedor){
-    printf("\t#########################\n");
-    printf("\t%s", fornecedor->cnpj);
-    printf("\t%s", fornecedor->nome);
-    printf("\t%s", fornecedor->email);
-    printf("\t%s", fornecedor->telefone);
+    printf("################################################################################\n###\n");
+    printf("###\tCNPJ:.........%s", fornecedor->cnpj);
+    printf("###\tNome:.........%s", fornecedor->nome);
+    printf("###\tEmail:........%s", fornecedor->email);
+    printf("###\tTelefone:.....%s", fornecedor->telefone);
+    printf("###\n");
+    printf("################################################################################\n");
 }
 
 
