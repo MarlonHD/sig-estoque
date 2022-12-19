@@ -151,11 +151,13 @@ void gravaProduto(Produto *prod){
 }
 
 void exibeProduto(Produto *produto){
-    printf("\t################################\n");
-    printf("\t%s", produto->codProduto);
-    printf("\t%s", produto->nomeProduto);
-    printf("\t%s", produto->cnpjFornecedor);
-    printf("\t%s", produto->categoria);
+    printf("################################################################################\n###\n");
+    printf("###\tCódigo do Produto:......%s", produto->codProduto);
+    printf("###\tNome do Produto:........%s", produto->nomeProduto);
+    printf("###\tCNPJ do Fornecedor:.....%s", produto->cnpjFornecedor);
+    printf("###\tCategoria:..............%s", produto->categoria);
+    printf("###\n");
+    printf("################################################################################");
 }
 
 void buscarProdutoNome(char *nome){
