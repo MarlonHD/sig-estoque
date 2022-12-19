@@ -125,16 +125,18 @@ int gravaRegistro(Registro *reg){
 }
 
 void exibeRegistro(Registro *reg){
-    printf("\n\t#############\n");
+    printf("################################################################################\n###\n");
     
     if(reg->tipo == 'i'){
-        printf("\tTipo: Entrada");
+        printf("###\tTipo:...............Entrada");
     }else if(reg->tipo == 'o'){
-        printf("\tTipo: Saída");
+        printf("###\tTipo:...............Saída");
     }
-    printf("\n\tProduto: %s", reg->codProduto);
-    printf("\tQuantidade: %d", reg->quantidade);
-    printf("\n\tHorário: %s", ctime(&reg->tempo));
+    printf("\n###\tProduto:............%s", reg->codProduto);
+    printf("###\tQuantidade:.........%d", reg->quantidade);
+    printf("\n###\tHorário:............%s", ctime(&reg->tempo));
+    printf("###\n");
+    printf("################################################################################\n");
 }
 
 Estoque* preencheEstoque(void){
@@ -256,9 +258,11 @@ int gravaEstoque(Registro *reg){
 }
 
 void exibeEstoque(Estoque *est){
-    printf("\t########################\n");
-    printf("\tcodigo: %s", est->codProduto);
-    printf("\tquantidade: %d \n", est->quantidade);
+    printf("################################################################################\n###\n");
+    printf("###\tcodigo:.............%s", est->codProduto);
+    printf("###\tquantidade:.........%d \n", est->quantidade);
+    printf("###\n");
+    printf("################################################################################\n");
 }
 
 void alterarEstoque(char tipo){    //Função cadastrar estoque
