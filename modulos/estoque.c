@@ -125,16 +125,19 @@ int gravaRegistro(Registro *reg){
 }
 
 void exibeRegistro(Registro *reg){
+    //"\033[41m"
+    struct tm *data = localtime(&reg->tempo);
     printf("################################################################################\n###\n");
     
     if(reg->tipo == 'i'){
-        printf("###\tTipo:...............Entrada");
+        printf("###\tTipo:...............%sEntrada%s","\033[32m","\033[0m");
     }else if(reg->tipo == 'o'){
-        printf("###\tTipo:...............Saída");
+        printf("###\tTipo:...............%sSaída%s","\033[31m","\033[0m");
     }
     printf("\n###\tProduto:............%s", reg->codProduto);
     printf("###\tQuantidade:.........%d", reg->quantidade);
-    printf("\n###\tHorário:............%s", ctime(&reg->tempo));
+    printf("\n###\tHorário:............%d/%d/%d", data->tm_mday, data->tm_mon+1, data->tm_year+1900/*ctime(&reg->tempo)*/ );
+    printf(" - %d:%d:%d\n", data->tm_hour, data->tm_min, data->tm_sec);
     printf("###\n");
     printf("################################################################################\n");
 }
