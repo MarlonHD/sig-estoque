@@ -6,7 +6,7 @@
 ///               Projeto Sistema de Controle de Estoques                   ///
 ///   Developed by Cleomar Junior and Marlon Silva -- since Aug, 2022       ///
 ///////////////////////////////////////////////////////////////////////////////
-///                                Semana 12                                 ///
+///                                Semana 16                                ///
 ///////////////////////////////////////////////////////////////////////////////
 
 #include <stdio.h>
@@ -26,6 +26,8 @@ int main(void){
     char op;
     char op1 = '0';
     NoFornecedor* lista;
+    telaLoad();
+    getchar();
     do{
         (op1 == '0') ? telaPrincipal() : 1;
         op = (op1 == '0') ? escolherOpcao() : op;
@@ -136,9 +138,10 @@ int main(void){
                         prodAlfab();
                         break;
                     case '9':
+                        estoqueByQuant();
                     //lista = listaOrdenadaForne();
                     //exibeLista(lista);
-                    break;        
+                        break;        
                     case '0':
                         break;
                     default:
