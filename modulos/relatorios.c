@@ -152,12 +152,17 @@ void fornecedoresCad(void){
 char* getFiltro(int op){
     char* filtro;
     filtro = (char*)malloc(sizeof(char)*30);
+    char cancel = '1';
     if(op == 1){
         do{
-        printf("\tDigite o CNPJ do fornecedor (apenas números): \n\t");
-        fgets(filtro, 30, stdin);
-        limpaTexto(filtro);
-    }while(!isFornecedorCad(filtro));
+            printf("\tDigite o CNPJ do fornecedor (apenas números): \n\t");
+            fgets(filtro, 30, stdin);
+            limpaTexto(filtro);
+            if(!isFornecedorCad(filtro)){
+                printf("\tCNPJ não cadastrado (0 para cancelar ação):\n\t");
+                scanf("%c",&cancel);
+            }
+        }while(!isFornecedorCad(filtro) && cancel!='0');
     }else if(op == 2){
         do{
             printf("\tDigite a categoria do produto: \n\t");
@@ -189,11 +194,11 @@ void prod_filtro(int op){
             if(strcmp(prod->cnpjFornecedor,filtro)==0){
                 exibeProduto(prod);
                 if(isOnEstoque(prod->codProduto)){
-                    printf("\tQuantidade: %d\n", quantidade(prod->codProduto));
+                    printf("###\tQuantidade:.............%d\n", quantidade(prod->codProduto));
                 }else{
-                    printf("\tQuantidade: 0\n");
+                    printf("###\tQuantidade:.............0\n");
                 }
-                
+                printf("###\n################################################################################\n");
             }
         }
     }else if(op == 2){
@@ -201,10 +206,11 @@ void prod_filtro(int op){
             if(strcmp(prod->categoria, filtro)==0){
                 exibeProduto(prod);
                 if(isOnEstoque(prod->codProduto)){
-                    printf("\tQuantidade: %d\n", quantidade(prod->codProduto));
+                    printf("###\tQuantidade:.............%d\n", quantidade(prod->codProduto));
                 }else{
-                    printf("\tQuantidade: 0\n");
+                    printf("###\tQuantidade:.............0\n");
                 }
+                printf("###\n################################################################################\n");
             }
         }
     }
