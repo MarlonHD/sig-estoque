@@ -23,7 +23,7 @@ void moduloRelatorios(void) {
     printf("###               6. Produtos por Categoria                                  ###\n");
     printf("###               7. Fornecedores em ordem alfabética                        ###\n");
     printf("###               8. Produtos em ordem alfabética                            ###\n");
-    printf("###               9. Estoque completo dinamico                               ###\n");
+    printf("###               9. Estoque em ordem de quantidade                          ###\n");
     printf("###               0. Voltar                                                  ###\n");
     printf("###                                                                          ###\n");
     printf("################################################################################\n");
